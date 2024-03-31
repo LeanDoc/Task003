@@ -40,17 +40,17 @@ CREATE TABLE IF NOT EXISTS phone_numbers
     );
 
 INSERT INTO positions (position_name)
-VALUES ('Администратор'),        -- 1
-       ('Технический директор'), -- 2
-       ('Программист Java'),     -- 3
+VALUES ('Менеджер по закупкам'),        -- 1
+       ('Директор по маркетингу'), -- 2
+       ('Логист'),     -- 3
        ('Программист React'),    -- 4
        ('HR'); -- 5
 
 INSERT INTO subdivisions (subdivision_name)
-VALUES ('Администрация'),       -- 1
-       ('BackEnd разработка'),  -- 2
-       ('Frontend разработка'), -- 3
-       ('HR менеджмент'); -- 4
+VALUES ('Отдел закупок'),       -- 1
+       ('Маркетинг'),  -- 2
+       ('Отдел логистики'), -- 3
+       ('Управление персоналом'); -- 4
 
 INSERT INTO employees (employee_firstName, employee_lastName, position_id)
 VALUES ('Иван', 'Субботин', 1),      -- 1

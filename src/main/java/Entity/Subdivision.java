@@ -7,12 +7,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class Subdivision {
-   // надо еще добавить getInstance от repo
    private static final EmployeeToSubdivisionRepository employeeToSubdivisionRepository  = EmployeeToSubdivisionRepositoryImpl.getInstance();
     private Long id;
     private String name;
     private List<Employee> employeeList;
-
 
     public Long getId() {
         return id;

@@ -1,10 +1,9 @@
 package Entity;
 
 /**
- * The role of User
- * <p>
+ * The position of Employee
  * Relation:
- * Many to One: User -> Role
+ * Many to One: Employee -> Position
  */
 public class Position {
     private Long id;

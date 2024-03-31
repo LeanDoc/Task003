@@ -9,8 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * User entity
- * <p>
+ * Сущность Employee
  * Relation:
  * One To Many: Employee -> PhoneNumber
  * Many To Many: Employee <-> Subdivision
