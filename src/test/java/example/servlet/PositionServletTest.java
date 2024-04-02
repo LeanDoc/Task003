@@ -76,18 +76,14 @@ class PositionServletTest {
     @Test
     void doGetAll() throws IOException, SQLException {
         Mockito.doReturn("position/all").when(mockRequest).getPathInfo();
-
         positionServlet.doGet(mockRequest, mockResponse);
-
         Mockito.verify(mockPositionService).findAll();
     }
 
     @Test
     void doGetById() throws IOException, NotFoundException, SQLException {
         Mockito.doReturn("position/2").when(mockRequest).getPathInfo();
-
         positionServlet.doGet(mockRequest, mockResponse);
-
         Mockito.verify(mockPositionService).findById(Mockito.anyLong());
     }
 
@@ -95,49 +91,23 @@ class PositionServletTest {
     void doGetNotFoundException() throws IOException, NotFoundException, SQLException {
         Mockito.doReturn("position/100").when(mockRequest).getPathInfo();
         Mockito.doThrow(new NotFoundException("not found.")).when(mockPositionService).findById(100L);
-
         positionServlet.doGet(mockRequest, mockResponse);
-
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_NOT_FOUND);
     }
-
-//    @Test
-//    void doGetBadRequest() throws IOException {
-//        Mockito.doReturn("position/2q").when(mockRequest).getPathInfo();
-//
-//        positionServlet.doGet(mockRequest, mockResponse);
-//
-//        Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_BAD_REQUEST);
-//    }
 
     @Test
     void doDelete() throws IOException, NotFoundException, SQLException {
         Mockito.doReturn("position/2").when(mockRequest).getPathInfo();
         Mockito.doReturn(true).when(mockPositionService).delete(Mockito.anyLong());
-
         positionServlet.doDelete(mockRequest, mockResponse);
-
         Mockito.verify(mockPositionService).delete(Mockito.anyLong());
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_NO_CONTENT);
     }
 
-//    @Test
-//    void doDeleteNotFound() throws IOException, NotFoundException, SQLException {
-//        Mockito.doReturn("position/100").when(mockRequest).getPathInfo();
-//        Mockito.doThrow(new NotFoundException("not found.")).when(mockPositionService).delete(100L);
-//
-//        positionServlet.doDelete(mockRequest, mockResponse);
-//
-//        Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_NOT_FOUND);
-//        Mockito.verify(mockPositionService).delete(Mockito.anyLong());
-//    }
-
     @Test
     void doDeleteBadRequest() throws IOException {
         Mockito.doReturn("position/a100").when(mockRequest).getPathInfo();
-
         positionServlet.doDelete(mockRequest, mockResponse);
-
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_BAD_REQUEST);
     }
 
@@ -149,12 +119,9 @@ class PositionServletTest {
                 "{\"name\":\"" + expectedName + "\"}",
                 null
         ).when(mockBufferedReader).readLine();
-
         positionServlet.doPost(mockRequest, mockResponse);
-
         ArgumentCaptor<PositionIncomingDto> argumentCaptor = ArgumentCaptor.forClass(PositionIncomingDto.class);
         Mockito.verify(mockPositionService).save(argumentCaptor.capture());
-
         PositionIncomingDto result = argumentCaptor.getValue();
         Assertions.assertEquals(expectedName, result.getName());
     }
@@ -166,9 +133,7 @@ class PositionServletTest {
                 "{\"id\":1}",
                 null
         ).when(mockBufferedReader).readLine();
-
         positionServlet.doPost(mockRequest, mockResponse);
-
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_BAD_REQUEST);
     }
 
@@ -181,12 +146,9 @@ class PositionServletTest {
                 expectedName + "\"}",
                 null
         ).when(mockBufferedReader).readLine();
-
         positionServlet.doPut(mockRequest, mockResponse);
-
         ArgumentCaptor<PositionUpdateDto> argumentCaptor = ArgumentCaptor.forClass(PositionUpdateDto.class);
         Mockito.verify(mockPositionService).update(argumentCaptor.capture());
-
         PositionUpdateDto result = argumentCaptor.getValue();
         Assertions.assertEquals(expectedName, result.getName());
     }
@@ -198,26 +160,7 @@ class PositionServletTest {
                 "{Bad json:1}",
                 null
         ).when(mockBufferedReader).readLine();
-
         positionServlet.doPut(mockRequest, mockResponse);
-
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_BAD_REQUEST);
     }
-
-//    @Test
-//    void doPutNotFound() throws IOException, NotFoundException, SQLException {
-//        Mockito.doReturn(mockBufferedReader).when(mockRequest).getReader();
-//        Mockito.doReturn(
-//                "{\"id\": 4,\"name\": \"Admin\"}",
-//                null
-//        ).when(mockBufferedReader).readLine();
-//        Mockito.doThrow(new NotFoundException("not found.")).when(mockPositionService)
-//                .update(Mockito.any(PositionUpdateDto.class));
-//
-//        positionServlet.doPut(mockRequest, mockResponse);
-//
-//        Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_NOT_FOUND);
-//        Mockito.verify(mockPositionService).update(Mockito.any(PositionUpdateDto.class));
-//    }
-
 }

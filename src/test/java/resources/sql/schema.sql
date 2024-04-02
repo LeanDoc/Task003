@@ -8,13 +8,13 @@ CREATE TABLE IF NOT EXISTS positions
 (
     position_id   BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     position_name VARCHAR(255) NOT NULL UNIQUE
-    );
+);
 
 CREATE TABLE IF NOT EXISTS subdivisions
 (
     subdivision_id   BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     subdivision_name VARCHAR(255) NOT NULL UNIQUE
-    );
+);
 
 CREATE TABLE IF NOT EXISTS employees
 (
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS employees
     employee_firstName VARCHAR(255) NOT NULL,
     employee_lastName  VARCHAR(255) NOT NULL,
     position_id        BIGINT REFERENCES positions (position_id)
-    );
+);
 
 CREATE TABLE IF NOT EXISTS employees_subdivisions
 (
@@ -30,36 +30,36 @@ CREATE TABLE IF NOT EXISTS employees_subdivisions
     employee_id              BIGINT REFERENCES employees (employee_id),
     subdivision_id        BIGINT REFERENCES subdivisions (subdivision_id),
     CONSTRAINT unique_link UNIQUE (employee_id, subdivision_id)
-    );
+);
 
 CREATE TABLE IF NOT EXISTS phone_numbers
 (
     phonenumber_id     BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     phonenumber_number VARCHAR(255) NOT NULL UNIQUE,
     employee_id            BIGINT REFERENCES employees (employee_id)
-    );
+);
 
 INSERT INTO positions (position_name)
-VALUES ('Администратор'),        -- 1
-       ('Технический директор'), -- 2
-       ('Программист Java'),     -- 3
+VALUES ('Менеджер по закупкам'),        -- 1
+       ('Директор по маркетингу'), -- 2
+       ('Логист'),     -- 3
        ('Программист React'),    -- 4
        ('HR'); -- 5
 
 INSERT INTO subdivisions (subdivision_name)
-VALUES ('Администрация'),       -- 1
-       ('BackEnd разработка'),  -- 2
-       ('Frontend разработка'), -- 3
-       ('HR менеджмент'); -- 4
+VALUES ('Отдел закупок'),       -- 1
+       ('Маркетинг'),  -- 2
+       ('Отдел логистики'), -- 3
+       ('Управление персоналом'); -- 4
 
 INSERT INTO employees (employee_firstName, employee_lastName, position_id)
-VALUES ('Иван', 'Субботин', 1),      -- 1
-       ('Петр', 'Понедельников', 2), -- 2
-       ('Игнат', 'Вторников', 3),    -- 3
-       ('Иван', 'Середец', 3),       -- 4
-       ('Максим', 'Четверкин', 3),   -- 5
-       ('Вера', 'Пятницкая', 4),     -- 6
-       ('Ольга', 'Воскресенская', 5); -- 7
+VALUES ('Леонид', 'Карандашев', 1),      -- 1
+       ('Иван', 'Иванов', 2), -- 2
+       ('Пётр', 'Петров', 3),    -- 3
+       ('Сергей', 'Сергеев', 3),       -- 4
+       ('Алексей', 'Алексеев', 3),   -- 5
+       ('Вера', 'Надеждина', 4),     -- 6
+       ('Ольга', 'Капустина', 5); -- 7
 
 INSERT INTO employees_subdivisions (employee_id, subdivision_id)
 VALUES (1, 1), -- 1

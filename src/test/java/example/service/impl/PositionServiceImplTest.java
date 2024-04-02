@@ -82,21 +82,6 @@ class PositionServiceImplTest {
         Assertions.assertEquals(expectedId, result.getId());
     }
 
-//    @Test
-//    void updateNotFound() throws SQLException {
-//        PositionUpdateDto dto = new PositionUpdateDto(1L, "position update #1");
-//
-//        Mockito.doReturn(false).when(mockPositionRepository).exitsById(Mockito.any());
-//
-//        NotFoundException exception = Assertions.assertThrows(
-//                NotFoundException.class,
-//                () -> {
-//                    positionService.update(dto);
-//                }, "Not found."
-//        );
-//        Assertions.assertEquals("Position not found.", exception.getMessage());
-//    }
-
     @Test
     void findById() throws SQLException {
         Long expectedId = 1L;
@@ -110,21 +95,6 @@ class PositionServiceImplTest {
 
         Assertions.assertEquals(expectedId, dto.getId());
     }
-
-//    @Test
-//    void findByIdNotFound() throws SQLException {
-//        Optional<Position> position = Optional.empty();
-//
-//        Mockito.doReturn(false).when(mockPositionRepository).exitsById(Mockito.any());
-//
-//        NotFoundException exception = Assertions.assertThrows(
-//                NotFoundException.class,
-//                () -> {
-//                    positionService.findById(1L);
-//                }, "Not found."
-//        );
-//        Assertions.assertEquals("Position not found.", exception.getMessage());
-//    }
 
     @Test
     void findAll() throws SQLException {

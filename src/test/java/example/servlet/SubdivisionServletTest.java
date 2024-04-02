@@ -76,18 +76,14 @@ class SubdivisionServletTest {
     @Test
     void doGetAll() throws IOException, SQLException {
         Mockito.doReturn("subdivision/all").when(mockRequest).getPathInfo();
-
         subdivisionServlet.doGet(mockRequest, mockResponse);
-
         Mockito.verify(mockSubdivisionService).findAll();
     }
 
     @Test
     void doGetById() throws IOException, NotFoundException, SQLException {
         Mockito.doReturn("subdivision/2").when(mockRequest).getPathInfo();
-
         subdivisionServlet.doGet(mockRequest, mockResponse);
-
         Mockito.verify(mockSubdivisionService).findById(Mockito.anyLong());
     }
 
@@ -95,27 +91,21 @@ class SubdivisionServletTest {
     void doGetNotFoundException() throws IOException, NotFoundException, SQLException {
         Mockito.doReturn("subdivision/100").when(mockRequest).getPathInfo();
         Mockito.doThrow(new NotFoundException("not found.")).when(mockSubdivisionService).findById(100L);
-
         subdivisionServlet.doGet(mockRequest, mockResponse);
-
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_NOT_FOUND);
     }
 
     @Test
     void doGetBadRequest() throws IOException {
         Mockito.doReturn("subdivision/2q").when(mockRequest).getPathInfo();
-
         subdivisionServlet.doGet(mockRequest, mockResponse);
-
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_BAD_REQUEST);
     }
 
     @Test
     void doDelete() throws IOException, NotFoundException, SQLException {
         Mockito.doReturn("subdivision/2").when(mockRequest).getPathInfo();
-
         subdivisionServlet.doDelete(mockRequest, mockResponse);
-
         Mockito.verify(mockSubdivisionService).delete(Mockito.anyLong());
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_NO_CONTENT);
     }
@@ -123,9 +113,7 @@ class SubdivisionServletTest {
     @Test
     void doDeleteBadRequest() throws IOException {
         Mockito.doReturn("subdivision/a100").when(mockRequest).getPathInfo();
-
         subdivisionServlet.doDelete(mockRequest, mockResponse);
-
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_BAD_REQUEST);
     }
 
@@ -137,12 +125,9 @@ class SubdivisionServletTest {
                 "{\"name\":\"" + expectedName + "\"}",
                 null
         ).when(mockBufferedReader).readLine();
-
         subdivisionServlet.doPost(mockRequest, mockResponse);
-
         ArgumentCaptor<SubdivisionIncomingDto> argumentCaptor = ArgumentCaptor.forClass(SubdivisionIncomingDto.class);
         Mockito.verify(mockSubdivisionService).save(argumentCaptor.capture());
-
         SubdivisionIncomingDto result = argumentCaptor.getValue();
         Assertions.assertEquals(expectedName, result.getName());
     }
@@ -150,7 +135,6 @@ class SubdivisionServletTest {
     @Test
     void doPut() throws IOException, NotFoundException, SQLException {
         String expectedName = "Update department";
-
         Mockito.doReturn("department/").when(mockRequest).getPathInfo();
         Mockito.doReturn(mockBufferedReader).when(mockRequest).getReader();
         Mockito.doReturn(
@@ -158,12 +142,9 @@ class SubdivisionServletTest {
                 expectedName + "\"}",
                 null
         ).when(mockBufferedReader).readLine();
-
         subdivisionServlet.doPut(mockRequest, mockResponse);
-
         ArgumentCaptor<SubdivisionUpdateDto> argumentCaptor = ArgumentCaptor.forClass(SubdivisionUpdateDto.class);
         Mockito.verify(mockSubdivisionService).update(argumentCaptor.capture());
-
         SubdivisionUpdateDto result = argumentCaptor.getValue();
         Assertions.assertEquals(expectedName, result.getName());
     }
@@ -176,10 +157,7 @@ class SubdivisionServletTest {
                 "{Bad json:1}",
                 null
         ).when(mockBufferedReader).readLine();
-
         subdivisionServlet.doPut(mockRequest, mockResponse);
-
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_BAD_REQUEST);
     }
-
 }

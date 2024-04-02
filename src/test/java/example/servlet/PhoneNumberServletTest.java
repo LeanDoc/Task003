@@ -76,18 +76,14 @@ class PhoneNumberServletTest {
     @Test
     void doGetAll() throws IOException, SQLException {
         Mockito.doReturn("phone/all").when(mockRequest).getPathInfo();
-
         phoneNumberServlet.doGet(mockRequest, mockResponse);
-
         Mockito.verify(mockPhoneNumberService).findAll();
     }
 
     @Test
     void doGetById() throws IOException, NotFoundException, SQLException {
         Mockito.doReturn("phone/2").when(mockRequest).getPathInfo();
-
         phoneNumberServlet.doGet(mockRequest, mockResponse);
-
         Mockito.verify(mockPhoneNumberService).findById(Mockito.anyLong());
     }
 
@@ -95,18 +91,14 @@ class PhoneNumberServletTest {
     void doGetNotFoundException() throws IOException, NotFoundException, SQLException {
         Mockito.doReturn("phone/100").when(mockRequest).getPathInfo();
         Mockito.doThrow(new NotFoundException("not found.")).when(mockPhoneNumberService).findById(100L);
-
         phoneNumberServlet.doGet(mockRequest, mockResponse);
-
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_NOT_FOUND);
     }
 
     @Test
     void doGetBadRequest() throws IOException {
         Mockito.doReturn("phone/2q").when(mockRequest).getPathInfo();
-
         phoneNumberServlet.doGet(mockRequest, mockResponse);
-
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_BAD_REQUEST);
     }
 
@@ -114,9 +106,7 @@ class PhoneNumberServletTest {
     void doDelete() throws IOException, SQLException {
         Mockito.doReturn("phone/2").when(mockRequest).getPathInfo();
         Mockito.doReturn(true).when(mockPhoneNumberService).delete(Mockito.anyLong());
-
         phoneNumberServlet.doDelete(mockRequest, mockResponse);
-
         Mockito.verify(mockPhoneNumberService).delete(Mockito.anyLong());
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_NO_CONTENT);
     }
@@ -124,9 +114,7 @@ class PhoneNumberServletTest {
     @Test
     void doDeleteBadRequest() throws IOException {
         Mockito.doReturn("phone/a100").when(mockRequest).getPathInfo();
-
         phoneNumberServlet.doDelete(mockRequest, mockResponse);
-
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_BAD_REQUEST);
     }
 
@@ -138,12 +126,9 @@ class PhoneNumberServletTest {
                 "{\"number\":\"" + expectedNumber + "\"}",
                 null
         ).when(mockBufferedReader).readLine();
-
         phoneNumberServlet.doPost(mockRequest, mockResponse);
-
         ArgumentCaptor<PhoneNumberIncomingDto> argumentCaptor = ArgumentCaptor.forClass(PhoneNumberIncomingDto.class);
         Mockito.verify(mockPhoneNumberService).save(argumentCaptor.capture());
-
         PhoneNumberIncomingDto result = argumentCaptor.getValue();
         Assertions.assertEquals(expectedNumber, result.getNumber());
     }
@@ -157,14 +142,10 @@ class PhoneNumberServletTest {
                 expectedNumber + "\"}",
                 null
         ).when(mockBufferedReader).readLine();
-
         phoneNumberServlet.doPut(mockRequest, mockResponse);
-
         ArgumentCaptor<PhoneNumberUpdateDto> argumentCaptor = ArgumentCaptor.forClass(PhoneNumberUpdateDto.class);
         Mockito.verify(mockPhoneNumberService).update(argumentCaptor.capture());
-
         PhoneNumberUpdateDto result = argumentCaptor.getValue();
         Assertions.assertEquals(expectedNumber, result.getNumber());
-
     }
 }

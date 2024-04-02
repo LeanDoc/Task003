@@ -82,21 +82,6 @@ class PhoneNumberServiceImplTest {
         Assertions.assertEquals(expectedId, result.getId());
     }
 
-//    @Test
-//    void updateNotFound() throws SQLException {
-//        PhoneNumberUpdateDto dto = new PhoneNumberUpdateDto(1L, "+123 123 1111", null);
-//
-//        Mockito.doReturn(false).when(mockPhoneNumberRepository).exitsById(Mockito.any());
-//
-//        NotFoundException exception = Assertions.assertThrows(
-//                NotFoundException.class,
-//                () -> {
-//                    phoneNumberService.update(dto);
-//                }, "Not found."
-//        );
-//        Assertions.assertEquals("PhoneNumber not found.", exception.getMessage());
-//    }
-
     @Test
     void findById() throws SQLException {
         Long expectedId = 1L;
@@ -110,21 +95,6 @@ class PhoneNumberServiceImplTest {
 
         Assertions.assertEquals(expectedId, dto.getId());
     }
-
-//    @Test
-//    void findByIdNotFound() throws SQLException {
-//        Optional<Position> position = Optional.empty();
-//
-//        Mockito.doReturn(false).when(mockPhoneNumberRepository).exitsById(Mockito.any());
-//
-//        NotFoundException exception = Assertions.assertThrows(
-//                NotFoundException.class,
-//                () -> {
-//                    phoneNumberService.findById(1L);
-//                }, "Not found."
-//        );
-//        Assertions.assertEquals("PhoneNumber not found.", exception.getMessage());
-//    }
 
     @Test
     void findAll() throws SQLException {

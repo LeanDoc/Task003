@@ -26,7 +26,7 @@ class PhoneNumberRepositoryImplTest {
     private static int containerPort = 5432;
     private static int localPort = 5433;
     @Container
-    public static PostgreSQLContainer<?> container = new PostgreSQLContainer<>("postgres:15-alpine")
+    public static PostgreSQLContainer<?> container = new PostgreSQLContainer<>("postgres:15")
             .withDatabaseName("employees_db")
             .withUsername(PropertiesUtil.getProperties("db.username"))
             .withPassword(PropertiesUtil.getProperties("db.password"))
@@ -163,17 +163,6 @@ class PhoneNumberRepositoryImplTest {
     void findAll() throws SQLException {
         int expectedSize = 9; //9
         int resultSize = phoneNumberRepository.findAll().size();
-//        System.out.println(phoneNumberRepository.findByNumber("+1(123)123 1111"));
-//        System.out.println(phoneNumberRepository.findByNumber("+1(123)123 2222"));
-//        System.out.println(phoneNumberRepository.findByNumber("+1(123)123 3333"));
-//        System.out.println(phoneNumberRepository.findByNumber("+1(123)123 4444"));
-//        System.out.println(phoneNumberRepository.findByNumber("+1(123)123 5555"));
-//        System.out.println(phoneNumberRepository.findByNumber("+1(123)123 6666"));
-//        System.out.println(phoneNumberRepository.findByNumber("+1(123)123 7777"));
-//        System.out.println(phoneNumberRepository.findByNumber("+1(123)123 8888"));
-//        System.out.println(phoneNumberRepository.findByNumber("+1(123)123 9995"));
-        System.out.println(phoneNumberRepository.findAll());
-//        System.out.println(phoneNumberRepository.findByNumber("+1(123)123 9995").get().getId());
         Assertions.assertEquals(expectedSize, resultSize);
     }
 

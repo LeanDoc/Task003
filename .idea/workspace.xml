@@ -4,15 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcda9bf3-6b6b-4aee-a030-762d3bcf2859" name="Changes" comment="1st">
+    <list default="true" id="fcda9bf3-6b6b-4aee-a030-762d3bcf2859" name="Changes" comment="2st">
+      <change afterPath="$PROJECT_DIR$/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/impl/EmployeeRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/impl/EmployeeRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Subdivision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Subdivision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/connection/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connection/ConnectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/exception/DataBaseDriverLoadException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exception/DataBaseDriverLoadException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/exception/RepositoryException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exception/RepositoryException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/resources/sql/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/sql/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/repository/impl/EmployeeRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/repository/impl/EmployeeRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/repository/impl/EmployeeToSubdivisionRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/repository/impl/EmployeeToSubdivisionRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/repository/impl/PhoneNumberRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/repository/impl/PhoneNumberRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/repository/impl/PositionRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/repository/impl/PositionRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/repository/impl/SubdivisionRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/repository/impl/SubdivisionRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/service/impl/EmployeeServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/service/impl/EmployeeServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/service/impl/PhoneNumberServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/service/impl/PhoneNumberServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/service/impl/PositionServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/service/impl/PositionServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/service/impl/SubdivisionServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/service/impl/SubdivisionServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/servlet/EmployeeServletTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/servlet/EmployeeServletTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/servlet/PhoneNumberServletTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/servlet/PhoneNumberServletTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/servlet/PositionServletTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/servlet/PositionServletTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/servlet/SubdivisionServletTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/servlet/SubdivisionServletTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/servlet/mapper/impl/EmployeeDtoMapperImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/servlet/mapper/impl/EmployeeDtoMapperImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/servlet/mapper/impl/PhoneNumberDtoMapperImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/servlet/mapper/impl/PhoneNumberDtoMapperImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/servlet/mapper/impl/PositionDtoMapperImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/servlet/mapper/impl/PositionDtoMapperImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/example/servlet/mapper/impl/SubdivisionDtoMapperImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/servlet/mapper/impl/SubdivisionDtoMapperImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/sql/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/sql/schema.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,11 +77,11 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/target/Task003-1.0-SNAPSHOT.war" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.applicationServers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="profiler.jvm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -92,10 +111,14 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.20">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Task003" />
+  <component name="RunManager" selected="JUnit.All in Task003">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -123,22 +146,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EmployeeServletTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Task003" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="example.servlet.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="example.servlet" />
-      <option name="MAIN_CLASS_NAME" value="example.servlet.EmployeeServletTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SubdivisionServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EmployeeServiceImplTest.findByIdNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Task003" />
       <extension name="coverage">
         <pattern>
@@ -147,25 +155,46 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="example.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="example.service.impl.SubdivisionServiceImplTest" />
+      <option name="MAIN_CLASS_NAME" value="example.service.impl.EmployeeServiceImplTest" />
+      <option name="METHOD_NAME" value="findByIdNotFound" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmployeeServiceImplTest.updateNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Task003" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="example.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="example.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="example.service.impl.EmployeeServiceImplTest" />
+      <option name="METHOD_NAME" value="updateNotFound" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmployeeToSubdivisionRepositoryImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Task003" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="example.repository.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="example.repository.impl" />
+      <option name="MAIN_CLASS_NAME" value="example.repository.impl.EmployeeToSubdivisionRepositoryImplTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="TomeeConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
-      <deployment />
-      <server-settings />
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Tomcat 10.1.20" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.20" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Task003_1_0_SNAPSHOT_war/" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <file path="$PROJECT_DIR$/target/Task003-1.0-SNAPSHOT.war">
@@ -250,20 +279,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.EmployeeServiceImplTest.findByIdNotFound" />
       <item itemvalue="JUnit.All in Task003" />
+      <item itemvalue="JUnit.EmployeeServiceImplTest.updateNotFound" />
       <item itemvalue="JUnit.EmployeeRepositoryImplTest" />
-      <item itemvalue="JUnit.EmployeeServletTest" />
-      <item itemvalue="JUnit.SubdivisionServiceImplTest" />
+      <item itemvalue="JUnit.EmployeeToSubdivisionRepositoryImplTest" />
       <item itemvalue="Tomcat Server.Tomcat 10.1.20" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EmployeeRepositoryImplTest" />
-        <item itemvalue="JUnit.EmployeeServletTest" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.All in Task003" />
-        <item itemvalue="JUnit.SubdivisionServiceImplTest" />
+        <item itemvalue="JUnit.EmployeeToSubdivisionRepositoryImplTest" />
+        <item itemvalue="JUnit.EmployeeRepositoryImplTest" />
+        <item itemvalue="JUnit.EmployeeServiceImplTest.updateNotFound" />
+        <item itemvalue="JUnit.EmployeeServiceImplTest.findByIdNotFound" />
       </list>
     </recent_temporary>
   </component>
@@ -300,7 +329,13 @@
       <workItem from="1711775447821" duration="4095000" />
       <workItem from="1711784518917" duration="2713000" />
       <workItem from="1711865259053" duration="3304000" />
-      <workItem from="1711880353902" duration="4952000" />
+      <workItem from="1711880353902" duration="11777000" />
+      <workItem from="1711948337810" duration="7332000" />
+      <workItem from="1712055205563" duration="669000" />
+      <workItem from="1712058678686" duration="2000" />
+      <workItem from="1712061183324" duration="189000" />
+      <workItem from="1712061381843" duration="316000" />
+      <workItem from="1712061710272" duration="690000" />
     </task>
     <task id="LOCAL-00001" summary="1st">
       <created>1711570217885</created>
@@ -309,7 +344,14 @@
       <option name="project" value="LOCAL" />
       <updated>1711570217885</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="2st">
+      <created>1711886264151</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711886264151</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,7 +371,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1st" />
-    <option name="LAST_COMMIT_MESSAGE" value="1st" />
+    <MESSAGE value="2st" />
+    <option name="LAST_COMMIT_MESSAGE" value="2st" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -343,6 +386,7 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Task003$All_in_Task003.ic" NAME="All in Task003 Coverage Results" MODIFIED="1711951185263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Task003$PhoneNumberRepositoryImplTest_findAll.ic" NAME="PhoneNumberRepositoryImplTest.findAll Coverage Results" MODIFIED="1711266667149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>example.repository.impl.*</FILTER>
     </SUITE>

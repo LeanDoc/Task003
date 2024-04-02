@@ -25,7 +25,7 @@ class EmployeeRepositoryImplTest {
     private static final int containerPort = 5432;
     private static final int localPort = 5433;
     @Container
-    public static PostgreSQLContainer<?> container = new PostgreSQLContainer<>("postgres:15-alpine")
+    public static PostgreSQLContainer<?> container = new PostgreSQLContainer<>("postgres:15")
             .withDatabaseName("employees_db")
             .withUsername(PropertiesUtil.getProperties("db.username"))
             .withPassword(PropertiesUtil.getProperties("db.password"))
@@ -73,6 +73,7 @@ class EmployeeRepositoryImplTest {
         Assertions.assertEquals(expectedFirstname, resultEmployee.get().getFirstName());
         Assertions.assertEquals(expectedLastname, resultEmployee.get().getLastName());
     }
+
     @DisplayName("update")
     @Test
     void update() throws SQLException {
@@ -84,72 +85,7 @@ class EmployeeRepositoryImplTest {
         employeeRepository.update(employeeForUpdate);
         Assertions.assertEquals(expectedName, employeeForUpdate.getFirstName());
     }
-//    @Test
-//    void update() throws SQLException {
-//        String expectedFirstname = "UPDATE_Firstname";
-//        String expectedLastname = "UPDATE_Lastname";
-//        Long expectedPositionId = 1L;
-//
-//        Employee employeeForUpdate = employeeRepository.findById(3L).get();
-//
-//        List<Subdivision> subdivisionList = employeeForUpdate.getSubdivisionList();
-//        int phoneListSize = employeeForUpdate.getPhoneNumberList().size();
-//        int subdivisionListSize = employeeForUpdate.getSubdivisionList().size();
-//        Position oldPosition = employeeForUpdate.getPosition();
-//
-//        Assertions.assertNotEquals(expectedPositionId, employeeForUpdate.getPosition().getId());
-//        Assertions.assertNotEquals(expectedFirstname, employeeForUpdate.getFirstName());
-//        Assertions.assertNotEquals(expectedLastname, employeeForUpdate.getLastName());
-//
-//        employeeForUpdate.setFirstName(expectedFirstname);
-//        employeeForUpdate.setLastName(expectedLastname);
-//        employeeRepository.update(employeeForUpdate);
-//
-//        Employee resultEmployee = employeeRepository.findById(3L).get();
-//
-//        Assertions.assertEquals(expectedFirstname, resultEmployee.getFirstName());
-//        Assertions.assertEquals(expectedLastname, resultEmployee.getLastName());
-//
-//        Assertions.assertEquals(phoneListSize, resultEmployee.getPhoneNumberList().size());
-//        Assertions.assertEquals( subdivisionListSize, resultEmployee.getSubdivisionList().size());
-//        Assertions.assertEquals(oldPosition.getId(), resultEmployee.getPosition().getId());
-//
-//        employeeForUpdate.setPhoneNumberList(List.of());
-//        employeeForUpdate.setSubdivisionList(List.of());
-//        employeeForUpdate.setPosition(new Position(expectedPositionId, null));
-//        employeeRepository.update(employeeForUpdate);
-//        resultEmployee = employeeRepository.findById(3L).get();
-//
-//        Assertions.assertEquals(0, resultEmployee.getPhoneNumberList().size());
-//        Assertions.assertEquals(0, resultEmployee.getSubdivisionList().size());
-//        Assertions.assertEquals(expectedPositionId, resultEmployee.getPosition().getId());
-//
-//        subdivisionList.add(new Subdivision(3L, null, null));
-//        subdivisionList.add(new Subdivision(4L, null, null));
-//        employeeForUpdate.setSubdivisionList(subdivisionList);
-//        employeeRepository.update(employeeForUpdate);
-//        resultEmployee = employeeRepository.findById(3L).get();
-//
-//        Assertions.assertEquals(3, resultEmployee.getSubdivisionList().size());
-//
-//        subdivisionList.remove(2);
-//        employeeForUpdate.setSubdivisionList(subdivisionList);
-//        employeeRepository.update(employeeForUpdate);
-//        resultEmployee = employeeRepository.findById(3L).get();
-//
-//        Assertions.assertEquals(2, resultEmployee.getSubdivisionList().size());
-//
-//        employeeForUpdate.setPhoneNumberList(List.of(
-//                new PhoneNumber(null, "+4 new phone", null),
-//                new PhoneNumber(null, "+1(123)123 2222", null)));
-//        employeeForUpdate.setSubdivisionList(List.of(new Subdivision(1L, null, null)));
-//
-//        employeeRepository.update(employeeForUpdate);
-//        resultEmployee = employeeRepository.findById(3L).get();
-//
-//        Assertions.assertEquals(1, resultEmployee.getPhoneNumberList().size());
-//        Assertions.assertEquals(1, resultEmployee.getSubdivisionList().size());
-//    }
+
     @DisplayName("delete by Id")
     @Test
     void deleteById() throws SQLException {

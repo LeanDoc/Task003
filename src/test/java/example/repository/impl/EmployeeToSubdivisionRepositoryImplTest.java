@@ -25,7 +25,7 @@ class EmployeeToSubdivisionRepositoryImplTest {
     private static int containerPort = 5432;
     private static int localPort = 5433;
     @Container
-    public static PostgreSQLContainer<?> container = new PostgreSQLContainer<>("postgres:15-alpine")
+    public static PostgreSQLContainer<?> container = new PostgreSQLContainer<>("postgres:15")
             .withDatabaseName("employees_db")
             .withUsername(PropertiesUtil.getProperties("db.username"))
             .withPassword(PropertiesUtil.getProperties("db.password"))

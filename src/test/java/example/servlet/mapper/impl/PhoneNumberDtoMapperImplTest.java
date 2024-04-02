@@ -78,7 +78,6 @@ class PhoneNumberDtoMapperImplTest {
                                 List.of(),
                                 List.of())
                 )
-
         );
 
         List<PhoneNumberOutGoingDto> result = phoneNumberDtoMapper.map(phoneList);

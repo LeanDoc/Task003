@@ -42,7 +42,8 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             """;
     private static EmployeeRepository instance;
     private final ConnectionManagerImpl connectionManager = ConnectionManagerImpl.getInstance();
-    private final EmployeeToSubdivisionRepository employeeToSubdivisionRepository = EmployeeToSubdivisionRepositoryImpl.getInstance();
+    private final EmployeeToSubdivisionRepository employeeToSubdivisionRepository =
+            EmployeeToSubdivisionRepositoryImpl.getInstance();
     private final PhoneNumberRepository phoneNumberRepository = PhoneNumberRepositoryImpl.getInstance();
     private final PositionRepository positionRepository = PositionRepositoryImpl.getInstance();
     private final SubdivisionRepository subdivisionRepository = SubdivisionRepositoryImpl.getInstance();
@@ -58,7 +59,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     /**
-     * Сохранят в базу сущность работника,
+     * Сохраняем в базу сущность работника,
      * 1. сохраняем самого работника,
      * 2. сохраняем его должность
      * 3. сохраняем список телефонов.
@@ -70,7 +71,8 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     @Override
     public Employee save(Employee employee) throws SQLException {
         try (Connection connection = connectionManager.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SAVE_SQL, Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(SAVE_SQL,
+                     Statement.RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setString(1, employee.getFirstName());
             preparedStatement.setString(2, employee.getLastName());
@@ -120,7 +122,8 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                             .map(Subdivision::getId)
                             .toList()
             );
-            List<EmployeeToSubdivision> existsSubdivisionList = employeeToSubdivisionRepository.findAllByEmployeeId(employee.getId());
+            List<EmployeeToSubdivision> existsSubdivisionList = employeeToSubdivisionRepository.
+                    findAllByEmployeeId(employee.getId());
             for (EmployeeToSubdivision employeeToSubdivision : existsSubdivisionList) {
                 if (!subdivisionIdList.contains(employeeToSubdivision.getSubdivisionId())) {
                     employeeToSubdivisionRepository.deleteById(employeeToSubdivision.getId());

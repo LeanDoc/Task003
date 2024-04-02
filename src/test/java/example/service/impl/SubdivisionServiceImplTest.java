@@ -127,21 +127,6 @@ class SubdivisionServiceImplTest {
         Assertions.assertEquals(expectedId, result.getId());
     }
 
-//    @Test
-//    void updateNotFound() throws SQLException {
-//        SubdivisionUpdateDto dto = new SubdivisionUpdateDto(1L, "subdivision update #1");
-//
-//        Mockito.doReturn(false).when(mockSubdivisionRepository).exitsById(Mockito.any());
-//
-//        NotFoundException exception = Assertions.assertThrows(
-//                NotFoundException.class,
-//                () -> {
-//                    subdivisionService.update(dto);
-//                }, "Not found."
-//        );
-//        Assertions.assertEquals("Subdivision not found.", exception.getMessage());
-//    }
-
     @Test
     void findById() throws SQLException {
         Long expectedId = 1L;
@@ -155,21 +140,6 @@ class SubdivisionServiceImplTest {
 
         Assertions.assertEquals(expectedId, dto.getId());
     }
-
-//    @Test
-//    void findByIdNotFound() throws SQLException {
-//        Optional<Subdivision> subdivision = Optional.empty();
-//
-//        Mockito.doReturn(false).when(mockSubdivisionRepository).exitsById(Mockito.any());
-//
-//        NotFoundException exception = Assertions.assertThrows(
-//                NotFoundException.class,
-//                () -> {
-//                    subdivisionService.findById(1L);
-//                }, "Not found."
-//        );
-//        Assertions.assertEquals("Subdivision not found.", exception.getMessage());
-//    }
 
     @Test
     void findAll() throws SQLException {

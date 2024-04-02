@@ -90,21 +90,6 @@ class EmployeeServiceImplTest {
         Assertions.assertEquals(expectedId, result.getId());
     }
 
-//    @Test
-//    void updateNotFound() throws SQLException {
-//        EmployeeUpdateDto dto = new EmployeeUpdateDto(1L, "f1 name", "l1 name", null, null, null);
-//
-//        Mockito.doReturn(false).when(mockEmployeeRepository).exitsById(Mockito.any());
-//
-//        NotFoundException exception = Assertions.assertThrows(
-//                NotFoundException.class,
-//                () -> {
-//                    employeeService.update(dto);
-//                }, "Not found."
-//        );
-//        Assertions.assertEquals("Employee not found.", exception.getMessage());
-//    }
-
     @Test
     void findById() throws SQLException, NotFoundException {
         Long expectedId = 1L;
@@ -118,21 +103,6 @@ class EmployeeServiceImplTest {
 
         Assertions.assertEquals(expectedId, dto.getId());
     }
-//
-//    @Test
-//    void findByIdNotFound() throws SQLException {
-//        Optional<Employee> employee = Optional.empty();
-//
-//        Mockito.doReturn(false).when(mockEmployeeRepository).exitsById(Mockito.any());
-//
-//        NotFoundException exception = Assertions.assertThrows(
-//                NotFoundException.class,
-//                () -> {
-//                    employeeService.findById(1L);
-//                }, "Not found."
-//        );
-//        Assertions.assertEquals("Employee not found.", exception.getMessage());
-//    }
 
     @Test
     void findAll() throws SQLException, NotFoundException {
