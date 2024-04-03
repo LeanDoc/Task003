@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcda9bf3-6b6b-4aee-a030-762d3bcf2859" name="Changes" comment="2st" />
+    <list default="true" id="fcda9bf3-6b6b-4aee-a030-762d3bcf2859" name="Changes" comment="4rd">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +21,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/DAO/impl/EmployeeRepositoryImpl.java" root0="SKIP_INSPECTION" />
@@ -314,7 +317,7 @@
       <workItem from="1712117251213" duration="933000" />
       <workItem from="1712118541142" duration="2138000" />
       <workItem from="1712122247905" duration="334000" />
-      <workItem from="1712122599180" duration="495000" />
+      <workItem from="1712122599180" duration="825000" />
     </task>
     <task id="LOCAL-00001" summary="1st">
       <created>1711570217885</created>
@@ -344,7 +347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712123083322</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="4rd">
+      <created>1712123308893</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1712123308893</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

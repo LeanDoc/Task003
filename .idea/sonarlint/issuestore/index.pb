@@ -6,8 +6,6 @@ F
 webapp/WEB-INF/web.xml,1\7\17acf86fbbd0ea8e42ee5c9a7dff786e586719c8
 ]
 -src/test/java/resources/connection.properties,2\3\234fae67ff452caebaf5ba48b2f8c8a5fd900dbd
-G
-src/main/java/Main.java,e\4\e44a8606ce010ad9b89aafdfcee2ab49afbf6d10
 V
 &src/test/java/resources/sql/schema.sql,7\b\7b8e57eeb137ccbc8ce6f34e971667de0e77c152
 i
