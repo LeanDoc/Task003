@@ -4,51 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcda9bf3-6b6b-4aee-a030-762d3bcf2859" name="Changes" comment="2st">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/impl/EmployeeRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/impl/EmployeeRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/impl/EmployeeToSubdivisionRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/impl/EmployeeToSubdivisionRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/impl/PhoneNumberRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/impl/PhoneNumberRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/impl/PositionRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/impl/PositionRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/impl/SubdivisionRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/impl/SubdivisionRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exception/DataBaseDriverLoadException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exception/RepositoryException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/impl/EmployeeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/impl/PhoneNumberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/impl/PhoneNumberServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/impl/PositionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/impl/PositionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/impl/SubdivisionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/impl/SubdivisionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/DbServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/DbServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/dto/EmployeeIncomingDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/dto/EmployeeIncomingDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/dto/EmployeeOutGoingDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/dto/EmployeeOutGoingDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/dto/EmployeeUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/dto/EmployeeUpdateDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/dto/PhoneNumberUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/dto/PhoneNumberUpdateDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/dto/SubdivisionUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/dto/SubdivisionUpdateDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/mapper/EmployeeDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/mapper/EmployeeDtoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/mapper/impl/EmployeeDtoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/mapper/impl/EmployeeDtoMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/mapper/impl/PhoneNumberDtoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/mapper/impl/PhoneNumberDtoMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/mapper/impl/SubdivisionDtoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/mapper/impl/SubdivisionDtoMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/PropertiesUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/PropertiesUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/example/repository/impl/EmployeeRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/repository/impl/EmployeeRepositoryImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/example/repository/impl/EmployeeToSubdivisionRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/repository/impl/EmployeeToSubdivisionRepositoryImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/example/repository/impl/PhoneNumberRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/repository/impl/PhoneNumberRepositoryImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/example/repository/impl/PositionRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/repository/impl/PositionRepositoryImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/example/repository/impl/SubdivisionRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/repository/impl/SubdivisionRepositoryImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/example/service/impl/EmployeeServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/service/impl/EmployeeServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/example/service/impl/PhoneNumberServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/service/impl/PhoneNumberServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/example/service/impl/PositionServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/service/impl/PositionServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/example/service/impl/SubdivisionServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/service/impl/SubdivisionServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/example/servlet/EmployeeServletTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/servlet/EmployeeServletTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/example/servlet/mapper/impl/EmployeeDtoMapperImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/servlet/mapper/impl/EmployeeDtoMapperImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/example/servlet/mapper/impl/PhoneNumberDtoMapperImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/servlet/mapper/impl/PhoneNumberDtoMapperImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/example/servlet/mapper/impl/PositionDtoMapperImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/servlet/mapper/impl/PositionDtoMapperImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/example/servlet/mapper/impl/SubdivisionDtoMapperImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/example/servlet/mapper/impl/SubdivisionDtoMapperImplTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="fcda9bf3-6b6b-4aee-a030-762d3bcf2859" name="Changes" comment="2st" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -129,6 +85,17 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.All in Task003">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in Task003" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Task003" />
       <option name="PACKAGE_NAME" value="" />
@@ -347,6 +314,7 @@
       <workItem from="1712117251213" duration="933000" />
       <workItem from="1712118541142" duration="2138000" />
       <workItem from="1712122247905" duration="334000" />
+      <workItem from="1712122599180" duration="495000" />
     </task>
     <task id="LOCAL-00001" summary="1st">
       <created>1711570217885</created>
@@ -369,7 +337,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712062454443</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="4rd">
+      <created>1712123083322</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712123083322</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,7 +366,8 @@
     <MESSAGE value="1st" />
     <MESSAGE value="2st" />
     <MESSAGE value="3rd" />
-    <option name="LAST_COMMIT_MESSAGE" value="3rd" />
+    <MESSAGE value="4rd" />
+    <option name="LAST_COMMIT_MESSAGE" value="4rd" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
