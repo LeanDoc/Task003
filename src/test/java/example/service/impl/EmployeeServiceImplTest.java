@@ -64,28 +64,20 @@ class EmployeeServiceImplTest {
 
         EmployeeIncomingDto dto = new EmployeeIncomingDto("f1 name", "l1 name", position);
         Employee employee = new Employee(expectedId, "f1 name", "l1 name", position, List.of(), List.of());
-
         Mockito.doReturn(employee).when(mockEmployeeRepository).save(Mockito.any(Employee.class));
-
         EmployeeOutGoingDto result = employeeService.save(dto);
-
         Assertions.assertEquals(expectedId, result.getId());
     }
 
     @Test
     void update() throws SQLException, NotFoundException {
         Long expectedId = 1L;
-
         EmployeeUpdateDto dto = new EmployeeUpdateDto(expectedId, "f1 name", "l1 name",
                 new PositionUpdateDto(1L, "position#1"), List.of(), List.of());
-
         Mockito.doReturn(true).when(mockEmployeeRepository).exitsById(Mockito.any());
-
         employeeService.update(dto);
-
         ArgumentCaptor<Employee> argumentCaptor = ArgumentCaptor.forClass(Employee.class);
         Mockito.verify(mockEmployeeRepository).update(argumentCaptor.capture());
-
         Employee result = argumentCaptor.getValue();
         Assertions.assertEquals(expectedId, result.getId());
     }
@@ -93,14 +85,10 @@ class EmployeeServiceImplTest {
     @Test
     void findById() throws SQLException, NotFoundException {
         Long expectedId = 1L;
-
         Optional<Employee> employee = Optional.of(new Employee(expectedId, "f1 name", "l1 name", position, List.of(), List.of()));
-
         Mockito.doReturn(true).when(mockEmployeeRepository).exitsById(Mockito.any());
         Mockito.doReturn(employee).when(mockEmployeeRepository).findById(Mockito.anyLong());
-
         EmployeeOutGoingDto dto = employeeService.findById(expectedId);
-
         Assertions.assertEquals(expectedId, dto.getId());
     }
 
@@ -113,13 +101,10 @@ class EmployeeServiceImplTest {
     @Test
     void delete() throws SQLException, NotFoundException {
         Long expectedId = 100L;
-
         Mockito.doReturn(true).when(mockEmployeeRepository).exitsById(Mockito.any());
         employeeService.delete(expectedId);
-
         ArgumentCaptor<Long> argumentCaptor = ArgumentCaptor.forClass(Long.class);
         Mockito.verify(mockEmployeeRepository).deleteById(argumentCaptor.capture());
-
         Long result = argumentCaptor.getValue();
         Assertions.assertEquals(expectedId, result);
     }

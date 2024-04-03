@@ -34,7 +34,8 @@ class PositionRepositoryImplTest {
             .withPassword(PropertiesUtil.getProperties("db.password"))
             .withExposedPorts(containerPort)
             .withCreateContainerCmdModifier(cmd -> cmd.withHostConfig(
-                    new HostConfig().withPortBindings(new PortBinding(Ports.Binding.bindPort(localPort), new ExposedPort(containerPort)))
+                    new HostConfig().withPortBindings(new PortBinding(Ports.Binding.bindPort(localPort),
+                            new ExposedPort(containerPort)))
             ))
             .withInitScript(INIT_SQL);
     public static PositionRepository positionRepository;
@@ -63,7 +64,6 @@ class PositionRepositoryImplTest {
         Position position = new Position(null, expectedName);
         position = positionRepository.save(position);
         Optional<Position> resultPosition = positionRepository.findById(position.getId());
-
         Assertions.assertTrue(resultPosition.isPresent());
         Assertions.assertEquals(expectedName, resultPosition.get().getName());
     }
@@ -74,10 +74,8 @@ class PositionRepositoryImplTest {
 
         Position positionForUpdate = positionRepository.findById(3L).get();
         String oldPositionName = positionForUpdate.getName();
-
         positionForUpdate.setName(expectedName);
         positionRepository.update(positionForUpdate);
-
         Position position = positionRepository.findById(3L).get();
         Assertions.assertNotEquals(expectedName, oldPositionName);
         Assertions.assertEquals(expectedName, position.getName());
@@ -88,13 +86,10 @@ class PositionRepositoryImplTest {
     void deleteById() throws SQLException {
         Boolean expectedValue = true;
         int expectedSize = positionRepository.findAll().size();
-
         Position tempPosition = new Position(null, "Position for delete.");
         tempPosition = positionRepository.save(tempPosition);
-
         boolean resultDelete = positionRepository.deleteById(tempPosition.getId());
         int positionListAfterSize = positionRepository.findAll().size();
-
         Assertions.assertEquals(expectedValue, resultDelete);
         Assertions.assertEquals(expectedSize, positionListAfterSize);
     }
@@ -119,8 +114,6 @@ class PositionRepositoryImplTest {
     void findAll() throws SQLException {
         int expectedSize = 5;
         int resultSize = positionRepository.findAll().size();
-//        System.out.println(resultSize);
-//        System.out.println(positionRepository.findAll().size());
         Assertions.assertEquals(expectedSize, resultSize);
     }
 
@@ -133,7 +126,6 @@ class PositionRepositoryImplTest {
     }, delimiter = ';')
     void exitsById(Long positionId, Boolean expectedValue) throws SQLException {
         boolean isPositionExist = positionRepository.exitsById(positionId);
-
         Assertions.assertEquals(expectedValue, isPositionExist);
     }
 }

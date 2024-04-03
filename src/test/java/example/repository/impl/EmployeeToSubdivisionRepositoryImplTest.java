@@ -31,7 +31,8 @@ class EmployeeToSubdivisionRepositoryImplTest {
             .withPassword(PropertiesUtil.getProperties("db.password"))
             .withExposedPorts(containerPort)
             .withCreateContainerCmdModifier(cmd -> cmd.withHostConfig(
-                    new HostConfig().withPortBindings(new PortBinding(Ports.Binding.bindPort(localPort), new ExposedPort(containerPort)))
+                    new HostConfig().withPortBindings(new PortBinding(Ports.Binding.bindPort(localPort),
+                            new ExposedPort(containerPort)))
             ))
             .withInitScript(INIT_SQL);
     private static JdbcDatabaseDelegate jdbcDatabaseDelegate;
@@ -64,7 +65,6 @@ class EmployeeToSubdivisionRepositoryImplTest {
         );
         link = employeeToSubdivisionRepository.save(link);
         Optional<EmployeeToSubdivision> resultLink = employeeToSubdivisionRepository.findById(link.getId());
-
         Assertions.assertTrue(resultLink.isPresent());
         Assertions.assertEquals(expectedEmployeeId, resultLink.get().getEmployeeId());
         Assertions.assertEquals(expectedSubdivisionId, resultLink.get().getSubdivisionId());
@@ -74,22 +74,15 @@ class EmployeeToSubdivisionRepositoryImplTest {
     void update() throws SQLException {
         Long expectedEmployeeId = 1L;
         Long expectedSubdivisionId = 4L;
-
         EmployeeToSubdivision link = employeeToSubdivisionRepository.findById(2L).get();
-
         Long oldSubdivisionId = link.getSubdivisionId();
         Long oldEmployeeId = link.getEmployeeId();
-
         Assertions.assertNotEquals(expectedEmployeeId, oldEmployeeId);
         Assertions.assertNotEquals(expectedSubdivisionId, oldSubdivisionId);
-
         link.setEmployeeId(expectedEmployeeId);
         link.setSubdivisionId(expectedSubdivisionId);
-
         employeeToSubdivisionRepository.update(link);
-
         EmployeeToSubdivision resultLink = employeeToSubdivisionRepository.findById(2L).get();
-
         Assertions.assertEquals(link.getId(), resultLink.getId());
         Assertions.assertEquals(expectedEmployeeId, resultLink.getEmployeeId());
         Assertions.assertEquals(expectedSubdivisionId, resultLink.getSubdivisionId());
@@ -99,17 +92,12 @@ class EmployeeToSubdivisionRepositoryImplTest {
     void deleteById() throws SQLException {
         Boolean expectedValue = true;
         int expectedSize = employeeToSubdivisionRepository.findAll().size();
-
         EmployeeToSubdivision link = new EmployeeToSubdivision(null, 1L, 3L);
         link = employeeToSubdivisionRepository.save(link);
-
         int resultSizeBefore = employeeToSubdivisionRepository.findAll().size();
         Assertions.assertNotEquals(expectedSize, resultSizeBefore);
-
         boolean resultDelete = employeeToSubdivisionRepository.deleteById(link.getId());
-
         int resultSizeAfter = employeeToSubdivisionRepository.findAll().size();
-
         Assertions.assertEquals(expectedValue, resultDelete);
         Assertions.assertEquals(expectedSize, resultSizeAfter);
     }
@@ -123,9 +111,7 @@ class EmployeeToSubdivisionRepositoryImplTest {
     void deleteByEmployeeId(Long expectedEmployeeId, Boolean expectedValue) throws SQLException {
         int beforeSize = employeeToSubdivisionRepository.findAllByEmployeeId(expectedEmployeeId).size();
         Boolean resultDelete = employeeToSubdivisionRepository.deleteByEmployeeId(expectedEmployeeId);
-
         int afterDelete = employeeToSubdivisionRepository.findAllByEmployeeId(expectedEmployeeId).size();
-
         Assertions.assertEquals(expectedValue, resultDelete);
         if (beforeSize != 0) {
             Assertions.assertNotEquals(beforeSize, afterDelete);
@@ -141,9 +127,7 @@ class EmployeeToSubdivisionRepositoryImplTest {
     void deleteBySubdivisionId(Long expectedSubdivisionId, Boolean expectedValue) throws SQLException {
         int beforeSize = employeeToSubdivisionRepository.findAllBySubdivisionId(expectedSubdivisionId).size();
         Boolean resultDelete = employeeToSubdivisionRepository.deleteBySubdivisionId(expectedSubdivisionId);
-
         int afterDelete = employeeToSubdivisionRepository.findAllBySubdivisionId(expectedSubdivisionId).size();
-
         Assertions.assertEquals(expectedValue, resultDelete);
         if (beforeSize != 0) {
             Assertions.assertNotEquals(beforeSize, afterDelete);
@@ -157,9 +141,9 @@ class EmployeeToSubdivisionRepositoryImplTest {
             "3, true, 3, 2",
             "1000, false, 0, 0"
     })
-    void findById(Long expectedId, Boolean expectedValue, Long expectedEmployeeId, Long expectedSubdivisionId) throws SQLException {
+    void findById(Long expectedId, Boolean expectedValue, Long expectedEmployeeId, Long expectedSubdivisionId)
+            throws SQLException {
         Optional<EmployeeToSubdivision> link = employeeToSubdivisionRepository.findById(expectedId);
-
         Assertions.assertEquals(expectedValue, link.isPresent());
         if (link.isPresent()) {
             Assertions.assertEquals(expectedId, link.get().getId());
@@ -172,7 +156,6 @@ class EmployeeToSubdivisionRepositoryImplTest {
     void findAll() throws SQLException {
         int expectedSize = 8;
         int resultSize = employeeToSubdivisionRepository.findAll().size();
-
         Assertions.assertEquals(expectedSize, resultSize);
     }
 
@@ -197,7 +180,6 @@ class EmployeeToSubdivisionRepositoryImplTest {
     })
     void findAllByEmployeeId(Long employeeId, int expectedSize) throws SQLException {
         int resultSize = employeeToSubdivisionRepository.findAllByEmployeeId(employeeId).size();
-
         Assertions.assertEquals(expectedSize, resultSize);
     }
 
@@ -210,7 +192,6 @@ class EmployeeToSubdivisionRepositoryImplTest {
     })
     void findSubdivisionsByEmployeeId(Long employeeId, int expectedSize) throws SQLException {
         int resultSize = employeeToSubdivisionRepository.findSubdivisionsByEmployeeId(employeeId).size();
-
         Assertions.assertEquals(expectedSize, resultSize);
     }
 
@@ -224,7 +205,6 @@ class EmployeeToSubdivisionRepositoryImplTest {
     })
     void findAllBySubdivisionId(Long subdivisionId, int expectedSize) throws SQLException {
         int resultSize = employeeToSubdivisionRepository.findAllBySubdivisionId(subdivisionId).size();
-
         Assertions.assertEquals(expectedSize, resultSize);
     }
 
@@ -238,7 +218,6 @@ class EmployeeToSubdivisionRepositoryImplTest {
     })
     void findEmployeesBySubdivisionId(Long subdivisionId, int expectedSize) throws SQLException {
         int resultSize = employeeToSubdivisionRepository.findEmployeesBySubdivisionId(subdivisionId).size();
-
         Assertions.assertEquals(expectedSize, resultSize);
     }
 
@@ -248,9 +227,10 @@ class EmployeeToSubdivisionRepositoryImplTest {
             "1, 1, true",
             "1, 4, false"
     })
-    void findByEmployeeIdAndSubdivisionId(Long employeeId, Long subdivisionId, Boolean expectedValue) throws SQLException {
-        Optional<EmployeeToSubdivision> link = employeeToSubdivisionRepository.findByEmployeeIdAndSubdivisionId(employeeId, subdivisionId);
-
+    void findByEmployeeIdAndSubdivisionId(Long employeeId, Long subdivisionId, Boolean expectedValue)
+            throws SQLException {
+        Optional<EmployeeToSubdivision> link = employeeToSubdivisionRepository.
+                findByEmployeeIdAndSubdivisionId(employeeId, subdivisionId);
         Assertions.assertEquals(expectedValue, link.isPresent());
     }
 }

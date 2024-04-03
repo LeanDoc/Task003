@@ -59,11 +59,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     /**
-     * Сохраняем в базу сущность работника,
-     * 1. сохраняем самого работника,
-     * 2. сохраняем его должность
-     * 3. сохраняем список телефонов.
-     * 4. сохраняем список отделов.
+     * Сохраняем Employee,
      *
      * @param employee
      * @return
@@ -73,7 +69,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SAVE_SQL,
                      Statement.RETURN_GENERATED_KEYS)) {
-
             preparedStatement.setString(1, employee.getFirstName());
             preparedStatement.setString(2, employee.getLastName());
             if (employee.getPosition() == null) {
@@ -82,7 +77,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                 preparedStatement.setLong(3, employee.getPosition().getId());
             }
             preparedStatement.executeUpdate();
-
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (resultSet.next()) {
                 employee = new Employee(
@@ -101,19 +95,9 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         } catch (SQLException e) {
             throw new SQLException(e);
         }
-
         return employee;
     }
 
-
-    /**
-     * 1. Проверяем список на пустоту
-     * 1.1 если пустой то удаляем все записи из базы которые == enployeeId.
-     * 1.2 получаем все записи которые уже есть в базе
-     * 1.3 сверяем то что есть, добавляем, обновляем, или удаляем.
-     *
-     * @param employee
-     */
     private void saveSubdivisionList(Employee employee) throws SQLException {
         if (employee.getSubdivisionList() != null && !employee.getSubdivisionList().isEmpty()) {
             List<Long> subdivisionIdList = new ArrayList<>(
@@ -140,20 +124,11 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                     employeeToSubdivisionRepository.save(employeeToSubdivision);
                 }
             }
-
         } else {
             employeeToSubdivisionRepository.deleteByEmployeeId(employee.getId());
         }
     }
 
-    /**
-     * 1. Проверяем список на пустоту
-     * 1.1 если пустой то удаляем все записи из базы которые == employeeId.
-     * 1.2 получаем все записи которые уже есть в базе
-     * 1.3 сверяем то что есть, добавляем, обновляем, или удаляем.
-     *
-     * @param employee
-     */
     private void savePhoneNumberList(Employee employee) throws SQLException {
         if (employee.getPhoneNumberList() != null && !employee.getPhoneNumberList().isEmpty()) {
             List<PhoneNumber> phoneNumberList = new ArrayList<>(employee.getPhoneNumberList());
@@ -163,7 +138,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                             .map(PhoneNumber::getId)
                             .toList()
             );
-
             for (int i = 0; i < phoneNumberList.size(); i++) {
                 PhoneNumber phoneNumber = phoneNumberList.get(i);
                 phoneNumber.setEmployee(employee);
@@ -186,7 +160,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                             e.printStackTrace();
                         }
                     });
-
             existsPhoneNumberIdList
                     .stream()
                     .forEach(id -> {
@@ -196,22 +169,11 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                             throw new RuntimeException(e);
                         }
                     });
-
         } else {
             phoneNumberRepository.deleteByEmployeeId(employee.getId());
         }
-
     }
 
-
-    /**
-     * Проверяем создается ли новый Номер.
-     * Производим поиск по базе по номеру.
-     * Если номер найден, проверяем, закрепляется ли этот номер за каким-то работником.
-     * Если закрепляется тогда устанавливаем ID на тот который находится в базе.
-     *
-     * @param phoneNumber
-     */
     private void saveOrUpdateExitsNumber(PhoneNumber phoneNumber) throws SQLException {
         if (phoneNumberRepository.existsByNumber(phoneNumber.getNumber())) {
             Optional<PhoneNumber> exitNumber = phoneNumberRepository.findByNumber(phoneNumber.getNumber());
@@ -223,19 +185,16 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                         exitNumber.get().getEmployee()
                 );
                 phoneNumberRepository.update(phoneNumber);
-
             }
         } else {
             phoneNumberRepository.save(phoneNumber);
         }
-
     }
 
     @Override
     public void update(Employee employee ) throws SQLException {
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_SQL);) {
-
             preparedStatement.setString(1, employee.getFirstName());
             preparedStatement.setString(2, employee.getLastName());
             if (employee.getPosition() == null) {
@@ -258,10 +217,8 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         boolean deleteResult;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETE_SQL);) {
-
             employeeToSubdivisionRepository.deleteByEmployeeId(id);
             phoneNumberRepository.deleteByEmployeeId(id);
-
             preparedStatement.setLong(1, id);
             deleteResult = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
@@ -275,9 +232,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         Employee employee = null;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID_SQL)) {
-
             preparedStatement.setLong(1, id);
-
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 employee = createEmployee(resultSet);
@@ -293,7 +248,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         List<Employee> employeeList = new ArrayList<>();
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_SQL)) {
-
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 employeeList.add(createEmployee(resultSet));
@@ -309,9 +263,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         boolean isExists = false;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(EXIST_BY_ID_SQL)) {
-
             preparedStatement.setLong(1, id);
-
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 isExists = resultSet.getBoolean(1);

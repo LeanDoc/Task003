@@ -17,5 +17,4 @@ public interface EmployeeDtoMapper {
     EmployeeOutGoingDto map(Employee employee) throws SQLException;
 
     List<EmployeeOutGoingDto> map(List<Employee> employee) throws SQLException;
-
 }

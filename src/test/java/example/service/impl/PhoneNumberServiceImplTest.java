@@ -57,27 +57,19 @@ class PhoneNumberServiceImplTest {
 
         PhoneNumberIncomingDto dto = new PhoneNumberIncomingDto("+123 123 1111");
         PhoneNumber phoneNumber = new PhoneNumber(expectedId, "+123 123 1111", null);
-
         Mockito.doReturn(phoneNumber).when(mockPhoneNumberRepository).save(Mockito.any(PhoneNumber.class));
-
         PhoneNumberOutGoingDto result = phoneNumberService.save(dto);
-
         Assertions.assertEquals(expectedId, result.getId());
     }
 
     @Test
     void update() throws SQLException {
         Long expectedId = 1L;
-
         PhoneNumberUpdateDto dto = new PhoneNumberUpdateDto(expectedId, "+123 123 1111", null);
-
         Mockito.doReturn(true).when(mockPhoneNumberRepository).exitsById(Mockito.any());
-
         phoneNumberService.update(dto);
-
         ArgumentCaptor<PhoneNumber> argumentCaptor = ArgumentCaptor.forClass(PhoneNumber.class);
         Mockito.verify(mockPhoneNumberRepository).update(argumentCaptor.capture());
-
         PhoneNumber result = argumentCaptor.getValue();
         Assertions.assertEquals(expectedId, result.getId());
     }
@@ -85,14 +77,10 @@ class PhoneNumberServiceImplTest {
     @Test
     void findById() throws SQLException {
         Long expectedId = 1L;
-
         Optional<PhoneNumber> role = Optional.of(new PhoneNumber(expectedId, "+123 123 1111", null));
-
         Mockito.doReturn(true).when(mockPhoneNumberRepository).exitsById(Mockito.any());
         Mockito.doReturn(role).when(mockPhoneNumberRepository).findById(Mockito.anyLong());
-
         PhoneNumberOutGoingDto dto = phoneNumberService.findById(expectedId);
-
         Assertions.assertEquals(expectedId, dto.getId());
     }
 
@@ -105,12 +93,9 @@ class PhoneNumberServiceImplTest {
     @Test
     void delete() throws SQLException {
         Long expectedId = 100L;
-
         phoneNumberService.delete(expectedId);
-
         ArgumentCaptor<Long> argumentCaptor = ArgumentCaptor.forClass(Long.class);
         Mockito.verify(mockPhoneNumberRepository).deleteById(argumentCaptor.capture());
-
         Long result = argumentCaptor.getValue();
         Assertions.assertEquals(expectedId, result);
     }

@@ -29,6 +29,4 @@ public class EmployeeIncomingDto {
     public Position getPosition() {
         return position;
     }
-
 }
-

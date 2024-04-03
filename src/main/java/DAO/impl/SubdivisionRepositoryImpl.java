@@ -64,11 +64,8 @@ public class SubdivisionRepositoryImpl implements SubdivisionRepository {
     public Subdivision save(Subdivision subdivision) throws SQLException {
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SAVE_SQL, Statement.RETURN_GENERATED_KEYS)) {
-
             preparedStatement.setString(1, subdivision.getName());
-
             preparedStatement.executeUpdate();
-
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (resultSet.next()) {
                 subdivision = new Subdivision(
@@ -81,7 +78,6 @@ public class SubdivisionRepositoryImpl implements SubdivisionRepository {
         } catch (SQLException e) {
             throw new SQLException (e);
         }
-
         return subdivision;
     }
 
@@ -89,10 +85,8 @@ public class SubdivisionRepositoryImpl implements SubdivisionRepository {
     public void update(Subdivision subdivision) throws SQLException {
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_SQL);) {
-
             preparedStatement.setString(1, subdivision.getName());
             preparedStatement.setLong(2, subdivision.getId());
-
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e);
@@ -104,9 +98,7 @@ public class SubdivisionRepositoryImpl implements SubdivisionRepository {
         boolean deleteResult = true;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETE_SQL);) {
-
             preparedStatement.setLong(1, id);
-
             deleteResult = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new SQLException(e);
@@ -120,9 +112,7 @@ public class SubdivisionRepositoryImpl implements SubdivisionRepository {
         Subdivision subdivision = null;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID_SQL)) {
-
             preparedStatement.setLong(1, id);
-
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 subdivision = createSubdivision(resultSet);
@@ -138,7 +128,6 @@ public class SubdivisionRepositoryImpl implements SubdivisionRepository {
         List<Subdivision> positionList = new ArrayList<>();
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_SQL)) {
-
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 positionList.add(createSubdivision(resultSet));
@@ -154,9 +143,7 @@ public class SubdivisionRepositoryImpl implements SubdivisionRepository {
         boolean isExists = false;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(EXIST_BY_ID_SQL)) {
-
             preparedStatement.setLong(1, id);
-
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 isExists = resultSet.getBoolean(1);

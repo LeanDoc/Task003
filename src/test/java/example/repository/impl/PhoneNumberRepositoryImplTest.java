@@ -32,7 +32,8 @@ class PhoneNumberRepositoryImplTest {
             .withPassword(PropertiesUtil.getProperties("db.password"))
             .withExposedPorts(containerPort)
             .withCreateContainerCmdModifier(cmd -> cmd.withHostConfig(
-                    new HostConfig().withPortBindings(new PortBinding(Ports.Binding.bindPort(localPort), new ExposedPort(containerPort)))
+                    new HostConfig().withPortBindings(new PortBinding(Ports.Binding.bindPort(localPort),
+                            new ExposedPort(containerPort)))
             ))
             .withInitScript(INIT_SQL);
     private static JdbcDatabaseDelegate jdbcDatabaseDelegate;
@@ -64,7 +65,6 @@ class PhoneNumberRepositoryImplTest {
         );
         phoneNumber = phoneNumberRepository.save(phoneNumber);
         Optional<PhoneNumber> resultPhone = phoneNumberRepository.findById(phoneNumber.getId());
-
         Assertions.assertTrue(resultPhone.isPresent());
         Assertions.assertEquals(expectedNumber, resultPhone.get().getNumber());
     }
@@ -75,12 +75,9 @@ class PhoneNumberRepositoryImplTest {
 
         PhoneNumber phoneNumberUpdate = phoneNumberRepository.findById(3L).get();
         String oldPhoneNumber = phoneNumberUpdate.getNumber();
-
         phoneNumberUpdate.setNumber(expectedNumber);
         phoneNumberRepository.update(phoneNumberUpdate);
-
         PhoneNumber number = phoneNumberRepository.findById(3L).get();
-
         Assertions.assertNotEquals(expectedNumber, oldPhoneNumber);
         Assertions.assertEquals(expectedNumber, number.getNumber());
     }
@@ -92,13 +89,10 @@ class PhoneNumberRepositoryImplTest {
         int expectedSize = phoneNumberRepository.findAll().size();
         PhoneNumber tempNumber = new PhoneNumber(null, "+(temp) number", null);
         tempNumber = phoneNumberRepository.save(tempNumber);
-
         int resultSizeBefore = phoneNumberRepository.findAll().size();
         Assertions.assertNotEquals(expectedSize, resultSizeBefore);
-
         boolean resultDelete = phoneNumberRepository.deleteById(tempNumber.getId());
         int resultSizeListAfter = phoneNumberRepository.findAll().size();
-
         Assertions.assertEquals(expectedValue, resultDelete);
         Assertions.assertEquals(expectedSize, resultSizeListAfter);
     }
@@ -108,9 +102,7 @@ class PhoneNumberRepositoryImplTest {
     void deleteByEmployeeId() throws SQLException {
         Boolean expectedValue = true;
         int expectedSize = phoneNumberRepository.findAll().size() - phoneNumberRepository.findAllByEmployeeId(1L).size();
-
         boolean resultDelete = phoneNumberRepository.deleteByEmployeeId(1L);
-        System.out.println(resultDelete);
         int resultSize = phoneNumberRepository.findAll().size();
         Assertions.assertEquals(expectedValue, resultDelete);
         Assertions.assertEquals(expectedSize, resultSize);
@@ -124,7 +116,6 @@ class PhoneNumberRepositoryImplTest {
     })
     void existsByNumber(String number, Boolean expectedValue) throws SQLException {
         boolean isExist = phoneNumberRepository.existsByNumber(number);
-
         Assertions.assertEquals(expectedValue, isExist);
     }
 
@@ -136,7 +127,6 @@ class PhoneNumberRepositoryImplTest {
     })
     void findByNumber(String findNumber, Boolean expectedValue) throws SQLException {
         Optional<PhoneNumber> phoneNumber = phoneNumberRepository.findByNumber(findNumber);
-
         Assertions.assertEquals(expectedValue, phoneNumber.isPresent());
         if (phoneNumber.isPresent()) {
             Assertions.assertEquals(findNumber, phoneNumber.get().getNumber());
@@ -152,7 +142,6 @@ class PhoneNumberRepositoryImplTest {
     })
     void findById(Long expectedId, Boolean expectedValue) throws SQLException {
         Optional<PhoneNumber> phoneNumber = phoneNumberRepository.findById(expectedId);
-
         Assertions.assertEquals(expectedValue, phoneNumber.isPresent());
         if (phoneNumber.isPresent()) {
             Assertions.assertEquals(expectedId, phoneNumber.get().getId());
@@ -175,7 +164,6 @@ class PhoneNumberRepositoryImplTest {
     })
     void exitsById(Long expectedId, Boolean expectedValue) throws SQLException {
         Boolean resultValue = phoneNumberRepository.exitsById(expectedId);
-
         Assertions.assertEquals(expectedValue, resultValue);
     }
 
@@ -189,7 +177,6 @@ class PhoneNumberRepositoryImplTest {
     })
     void findAllByEmployeeId(Long employeeId, int expectedSize) throws SQLException {
         int resultSize = phoneNumberRepository.findAllByEmployeeId(employeeId).size();
-
         Assertions.assertEquals(expectedSize, resultSize);
     }
 }

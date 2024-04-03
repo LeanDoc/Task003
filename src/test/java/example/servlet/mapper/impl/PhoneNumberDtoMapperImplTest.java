@@ -27,7 +27,6 @@ class PhoneNumberDtoMapperImplTest {
     @Test
     void mapIncoming() {
         PhoneNumberIncomingDto dto = new PhoneNumberIncomingDto("+1 111 232 1234");
-
         PhoneNumber result = phoneNumberDtoMapper.map(dto);
         Assertions.assertNull(result.getId());
         Assertions.assertEquals(dto.getNumber(), result.getNumber());
@@ -48,7 +47,6 @@ class PhoneNumberDtoMapperImplTest {
         );
 
         PhoneNumberOutGoingDto result = phoneNumberDtoMapper.map(phone);
-
         Assertions.assertEquals(phone.getId(), result.getId());
         Assertions.assertEquals(phone.getNumber(), result.getNumber());
         Assertions.assertEquals(phone.getEmployee().getId(), result.getEmployeeDto().getId());
@@ -81,7 +79,6 @@ class PhoneNumberDtoMapperImplTest {
         );
 
         List<PhoneNumberOutGoingDto> result = phoneNumberDtoMapper.map(phoneList);
-
         Assertions.assertEquals(phoneList.size(), result.size());
     }
 
@@ -101,7 +98,6 @@ class PhoneNumberDtoMapperImplTest {
         );
 
         List<PhoneNumber> result = phoneNumberDtoMapper.mapUpdateList(updateDtoList);
-
         Assertions.assertEquals(updateDtoList.size(), result.size());
     }
 
@@ -115,7 +111,6 @@ class PhoneNumberDtoMapperImplTest {
         );
 
         PhoneNumber result = phoneNumberDtoMapper.map(dto);
-
         Assertions.assertEquals(dto.getId(), result.getId());
         Assertions.assertEquals(dto.getNumber(), result.getNumber());
     }

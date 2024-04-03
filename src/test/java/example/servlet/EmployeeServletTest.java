@@ -76,18 +76,14 @@ class EmployeeServletTest {
     @Test
     void doGetAll() throws IOException, SQLException, exception.NotFoundException {
         Mockito.doReturn("employee/all").when(mockRequest).getPathInfo();
-
         employeeServlet.doGet(mockRequest, mockResponse);
-
         Mockito.verify(mockEmployeeService).findAll();
     }
 
     @Test
     void doGetById() throws IOException, SQLException, exception.NotFoundException {
         Mockito.doReturn("employee/2").when(mockRequest).getPathInfo();
-
         employeeServlet.doGet(mockRequest, mockResponse);
-
         Mockito.verify(mockEmployeeService).findById(Mockito.anyLong());
     }
 
@@ -95,27 +91,21 @@ class EmployeeServletTest {
     void doGetNotFoundException() throws IOException, SQLException, exception.NotFoundException {
         Mockito.doReturn("employee/100").when(mockRequest).getPathInfo();
         Mockito.doThrow(new NotFoundException("not found.")).when(mockEmployeeService).findById(100L);
-
         employeeServlet.doGet(mockRequest, mockResponse);
-
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_NOT_FOUND);
     }
 
     @Test
     void doGetBadRequest() throws IOException {
         Mockito.doReturn("employee/2q").when(mockRequest).getPathInfo();
-
         employeeServlet.doGet(mockRequest, mockResponse);
-
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_BAD_REQUEST);
     }
 
     @Test
     void doDelete() throws IOException, SQLException, exception.NotFoundException {
         Mockito.doReturn("employee/2").when(mockRequest).getPathInfo();
-
         employeeServlet.doDelete(mockRequest, mockResponse);
-
         Mockito.verify(mockEmployeeService).delete(Mockito.anyLong());
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_NO_CONTENT);
     }
@@ -124,9 +114,7 @@ class EmployeeServletTest {
     void doDeleteNotFound() throws IOException, SQLException, exception.NotFoundException {
         Mockito.doReturn("employee/100").when(mockRequest).getPathInfo();
         Mockito.doThrow(new NotFoundException("not found.")).when(mockEmployeeService).delete(100L);
-
         employeeServlet.doDelete(mockRequest, mockResponse);
-
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_NOT_FOUND);
         Mockito.verify(mockEmployeeService).delete(100L);
     }
@@ -134,9 +122,7 @@ class EmployeeServletTest {
     @Test
     void doDeleteBadRequest() throws IOException {
         Mockito.doReturn("employee/a100").when(mockRequest).getPathInfo();
-
         employeeServlet.doDelete(mockRequest, mockResponse);
-
         Mockito.verify(mockResponse).setStatus(HttpServletResponse.SC_BAD_REQUEST);
     }
 
@@ -144,7 +130,6 @@ class EmployeeServletTest {
     void doPost() throws IOException, SQLException, exception.NotFoundException {
         String expectedFirstname = "New first";
         String expectedLastname = "New last";
-
         Mockito.doReturn(mockBufferedReader).when(mockRequest).getReader();
         Mockito.doReturn("{\"firstName\":\"" + expectedFirstname + "\"" +
                          ",\"lastName\":\"" + expectedLastname + "\"" +
@@ -152,12 +137,9 @@ class EmployeeServletTest {
                          "}",
                 null
         ).when(mockBufferedReader).readLine();
-
         employeeServlet.doPost(mockRequest, mockResponse);
-
         ArgumentCaptor<EmployeeIncomingDto> argumentCaptor = ArgumentCaptor.forClass(EmployeeIncomingDto.class);
         Mockito.verify(mockEmployeeService).save(argumentCaptor.capture());
-
         EmployeeIncomingDto result = argumentCaptor.getValue();
         Assertions.assertEquals(expectedFirstname, result.getFirstName());
         Assertions.assertEquals(expectedLastname, result.getLastName());
@@ -167,7 +149,6 @@ class EmployeeServletTest {
     void doPut() throws IOException, SQLException, exception.NotFoundException {
         String expectedFirstname = "New first";
         String expectedLastname = "New last";
-
         Mockito.doReturn(mockBufferedReader).when(mockRequest).getReader();
         Mockito.doReturn("{\"id\": 1," +
                          "\"firstName\":\"" + expectedFirstname + "\"" +
@@ -178,12 +159,9 @@ class EmployeeServletTest {
                          "}",
                 null
         ).when(mockBufferedReader).readLine();
-
         employeeServlet.doPut(mockRequest, mockResponse);
-
         ArgumentCaptor<EmployeeUpdateDto> argumentCaptor = ArgumentCaptor.forClass(EmployeeUpdateDto.class);
         Mockito.verify(mockEmployeeService).update(argumentCaptor.capture());
-
         EmployeeUpdateDto result = argumentCaptor.getValue();
         Assertions.assertEquals(expectedFirstname, result.getFirstName());
         Assertions.assertEquals(expectedLastname, result.getLastName());

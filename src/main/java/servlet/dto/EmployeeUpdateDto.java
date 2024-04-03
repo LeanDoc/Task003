@@ -46,6 +46,4 @@ public class EmployeeUpdateDto {
     public List<SubdivisionUpdateDto> getSubdivisionList() {
         return subdivisionList;
     }
-
 }
-

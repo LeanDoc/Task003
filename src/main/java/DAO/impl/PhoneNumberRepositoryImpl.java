@@ -93,7 +93,6 @@ public class PhoneNumberRepositoryImpl implements PhoneNumberRepository {
     public PhoneNumber save(PhoneNumber phoneNumber) throws SQLException {
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SAVE_SQL, Statement.RETURN_GENERATED_KEYS)) {
-
             preparedStatement.setString(1, phoneNumber.getNumber());
             if (phoneNumber.getEmployee() == null) {
                 preparedStatement.setNull(2, Types.NULL);
@@ -104,7 +103,6 @@ public class PhoneNumberRepositoryImpl implements PhoneNumberRepository {
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (resultSet.next()) {
-
                 phoneNumber = new PhoneNumber(
                         resultSet.getLong("phonenumber_id"),
                         phoneNumber.getNumber(),
@@ -121,7 +119,6 @@ public class PhoneNumberRepositoryImpl implements PhoneNumberRepository {
     public void update(PhoneNumber phoneNumber) throws SQLException {
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_SQL);) {
-
             preparedStatement.setString(1, phoneNumber.getNumber());
             if (phoneNumber.getEmployee() == null) {
                 preparedStatement.setNull(2, Types.NULL);
@@ -129,7 +126,6 @@ public class PhoneNumberRepositoryImpl implements PhoneNumberRepository {
                 preparedStatement.setLong(2, phoneNumber.getEmployee().getId());
             }
             preparedStatement.setLong(3, phoneNumber.getId());
-
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e);
@@ -141,14 +137,11 @@ public class PhoneNumberRepositoryImpl implements PhoneNumberRepository {
         boolean deleteResult = true;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETE_SQL);) {
-
             preparedStatement.setLong(1, id);
-
             deleteResult = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new SQLException(e);
         }
-
         return deleteResult;
     }
 
@@ -157,9 +150,7 @@ public class PhoneNumberRepositoryImpl implements PhoneNumberRepository {
         boolean deleteResult;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETE_ALL_BY_EMPLOYEEID_SQL);) {
-
             preparedStatement.setLong(1, employeeId);
-
             deleteResult = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new SQLException(e);
@@ -172,9 +163,7 @@ public class PhoneNumberRepositoryImpl implements PhoneNumberRepository {
         boolean isExists = false;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(EXIST_BY_NUMBER_SQL)) {
-
             preparedStatement.setString(1, number);
-
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 isExists = resultSet.getBoolean(1);
@@ -190,9 +179,7 @@ public class PhoneNumberRepositoryImpl implements PhoneNumberRepository {
         PhoneNumber phoneNumber = null;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_NUMBER_SQL)) {
-
             preparedStatement.setString(1, number);
-
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 phoneNumber = createPhoneNumber(resultSet);
@@ -208,9 +195,7 @@ public class PhoneNumberRepositoryImpl implements PhoneNumberRepository {
         PhoneNumber phoneNumber = null;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID_SQL)) {
-
             preparedStatement.setLong(1, id);
-
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 phoneNumber = createPhoneNumber(resultSet);
@@ -218,7 +203,6 @@ public class PhoneNumberRepositoryImpl implements PhoneNumberRepository {
         } catch (SQLException e) {
             throw new SQLException(e);
         }
-        System.out.println(phoneNumber);
         return Optional.ofNullable(phoneNumber);
 
     }
@@ -228,7 +212,6 @@ public class PhoneNumberRepositoryImpl implements PhoneNumberRepository {
         List<PhoneNumber> phoneNumberList = new ArrayList<>();
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_SQL)) {
-
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 phoneNumberList.add(createPhoneNumber(resultSet));
@@ -244,9 +227,7 @@ public class PhoneNumberRepositoryImpl implements PhoneNumberRepository {
         boolean isExists = false;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(EXIST_BY_ID_SQL)) {
-
             preparedStatement.setLong(1, id);
-
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 isExists = resultSet.getBoolean(1);
@@ -262,9 +243,7 @@ public class PhoneNumberRepositoryImpl implements PhoneNumberRepository {
         List<PhoneNumber> phoneNumberList = new ArrayList<>();
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_BY_EMPLOYEEID_SQL)) {
-
             preparedStatement.setLong(1, employeeId);
-
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 phoneNumberList.add(createPhoneNumber(resultSet));

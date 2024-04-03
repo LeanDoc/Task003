@@ -19,7 +19,6 @@ public class PhoneNumberServiceImpl implements PhoneNumberService {
     private static PhoneNumberService instance;
     private final PhoneNumberRepository phoneNumberRepository = PhoneNumberRepositoryImpl.getInstance();
 
-
     private PhoneNumberServiceImpl() {
     }
 

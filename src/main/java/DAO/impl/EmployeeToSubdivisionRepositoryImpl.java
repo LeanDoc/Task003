@@ -94,12 +94,9 @@ public class EmployeeToSubdivisionRepositoryImpl implements EmployeeToSubdivisio
     public EmployeeToSubdivision save(EmployeeToSubdivision employeeToSubdivision) throws SQLException {
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SAVE_SQL, Statement.RETURN_GENERATED_KEYS)) {
-
             preparedStatement.setLong(1, employeeToSubdivision.getEmployeeId());
             preparedStatement.setLong(2, employeeToSubdivision.getSubdivisionId());
-
             preparedStatement.executeUpdate();
-
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (resultSet.next()) {
                 employeeToSubdivision = new EmployeeToSubdivision(
@@ -111,7 +108,6 @@ public class EmployeeToSubdivisionRepositoryImpl implements EmployeeToSubdivisio
         } catch (SQLException e) {
             throw new SQLException (e);
         }
-
         return employeeToSubdivision;
     }
 
@@ -119,11 +115,9 @@ public class EmployeeToSubdivisionRepositoryImpl implements EmployeeToSubdivisio
     public void update(EmployeeToSubdivision employeeToSubdivision) throws SQLException {
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_SQL);) {
-
             preparedStatement.setLong(1, employeeToSubdivision.getEmployeeId());
             preparedStatement.setLong(2, employeeToSubdivision.getSubdivisionId());
             preparedStatement.setLong(3, employeeToSubdivision.getId());
-
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e);
@@ -135,14 +129,11 @@ public class EmployeeToSubdivisionRepositoryImpl implements EmployeeToSubdivisio
         boolean deleteResult;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETE_SQL);) {
-
             preparedStatement.setLong(1, id);
-
             deleteResult = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new SQLException(e);
         }
-
         return deleteResult;
     }
 
@@ -151,14 +142,11 @@ public class EmployeeToSubdivisionRepositoryImpl implements EmployeeToSubdivisio
         boolean deleteResult;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETE_BY_EMPLOYEEID_SQL);) {
-
             preparedStatement.setLong(1, employeeId);
-
             deleteResult = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new SQLException(e);
         }
-
         return deleteResult;
     }
 
@@ -167,14 +155,11 @@ public class EmployeeToSubdivisionRepositoryImpl implements EmployeeToSubdivisio
         boolean deleteResult;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETE_BY_SUBDIVISION_ID_SQL);) {
-
             preparedStatement.setLong(1, subdivisionId);
-
             deleteResult = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new SQLException(e);
         }
-
         return deleteResult;
     }
 
@@ -183,9 +168,7 @@ public class EmployeeToSubdivisionRepositoryImpl implements EmployeeToSubdivisio
         EmployeeToSubdivision employeeToSubdivision = null;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID_SQL)) {
-
             preparedStatement.setLong(1, id);
-
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 employeeToSubdivision = createEmployeeToSubdivision(resultSet);
@@ -201,7 +184,6 @@ public class EmployeeToSubdivisionRepositoryImpl implements EmployeeToSubdivisio
         List<EmployeeToSubdivision> employeeToSubdivisionList = new ArrayList<>();
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_SQL)) {
-
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 employeeToSubdivisionList.add(createEmployeeToSubdivision(resultSet));
@@ -217,9 +199,7 @@ public class EmployeeToSubdivisionRepositoryImpl implements EmployeeToSubdivisio
         boolean isExists = false;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(EXIST_BY_ID_SQL)) {
-
             preparedStatement.setLong(1, id);
-
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 isExists = resultSet.getBoolean(1);
@@ -235,7 +215,6 @@ public class EmployeeToSubdivisionRepositoryImpl implements EmployeeToSubdivisio
         List<EmployeeToSubdivision> EmployeeToSubdivisionList = new ArrayList<>();
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_BY_EMPLOYEEID_SQL)) {
-
             preparedStatement.setLong(1, employeeId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -251,7 +230,6 @@ public class EmployeeToSubdivisionRepositoryImpl implements EmployeeToSubdivisio
         List<Subdivision> subdivisionList = new ArrayList<>();
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_BY_EMPLOYEEID_SQL)) {
-
             preparedStatement.setLong(1, employeeId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -271,7 +249,6 @@ public class EmployeeToSubdivisionRepositoryImpl implements EmployeeToSubdivisio
         List<EmployeeToSubdivision> EmployeeToSubdivisionList = new ArrayList<>();
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_BY_SUBDIVISION_ID_SQL)) {
-
             preparedStatement.setLong(1, subdivisionId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -287,7 +264,6 @@ public class EmployeeToSubdivisionRepositoryImpl implements EmployeeToSubdivisio
         List<Employee> employeeList = new ArrayList<>();
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_BY_SUBDIVISION_ID_SQL)) {
-
             preparedStatement.setLong(1, subdivisionId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -307,7 +283,6 @@ public class EmployeeToSubdivisionRepositoryImpl implements EmployeeToSubdivisio
         Optional<EmployeeToSubdivision> employeeToSubdivision = Optional.empty();
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_EMPLOYEEID_AND_SUBDIVISION_ID_SQL)) {
-
             preparedStatement.setLong(1, employeeId);
             preparedStatement.setLong(2, subdivisionId);
             ResultSet resultSet = preparedStatement.executeQuery();

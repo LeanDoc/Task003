@@ -28,7 +28,6 @@ class SubdivisionDtoMapperImplTest {
     void mapIncoming() {
         SubdivisionIncomingDto dto = new SubdivisionIncomingDto("New Subdivision");
         Subdivision result = subdivisionDtoMapper.map(dto);
-
         Assertions.assertNull(result.getId());
         Assertions.assertEquals(dto.getName(), result.getName());
     }
@@ -37,9 +36,7 @@ class SubdivisionDtoMapperImplTest {
     @Test
     void testMapOutgoing() throws SQLException {
         Subdivision subdivision = new Subdivision(100L, "Subdivision #100", List.of(new Employee(), new Employee()));
-
         SubdivisionOutGoingDto result = subdivisionDtoMapper.map(subdivision);
-
         Assertions.assertEquals(subdivision.getId(), result.getId());
         Assertions.assertEquals(subdivision.getName(), result.getName());
         Assertions.assertEquals(subdivision.getEmployeeList().size(), result.getEmployeeList().size());
@@ -49,7 +46,6 @@ class SubdivisionDtoMapperImplTest {
     @Test
     void testMapUpdate() {
         SubdivisionUpdateDto dto = new SubdivisionUpdateDto(10L, "Update name.");
-
         Subdivision result = subdivisionDtoMapper.map(dto);
         Assertions.assertEquals(dto.getId(), result.getId());
         Assertions.assertEquals(dto.getName(), result.getName());
@@ -65,7 +61,6 @@ class SubdivisionDtoMapperImplTest {
         );
 
         List<SubdivisionOutGoingDto> result = subdivisionDtoMapper.map(subdivisionList);
-
         Assertions.assertEquals(3, result.size());
     }
 
@@ -79,7 +74,6 @@ class SubdivisionDtoMapperImplTest {
         );
 
         List<Subdivision> result = subdivisionDtoMapper.mapUpdateList(subdivisionList);
-
         Assertions.assertEquals(3, result.size());
     }
 }

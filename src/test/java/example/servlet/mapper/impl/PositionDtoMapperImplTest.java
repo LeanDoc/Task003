@@ -43,7 +43,6 @@ class PositionDtoMapperImplTest {
     @Test
     void mapIncoming() {
         Position resultPosition = positionDtoMapper.map(positionIncomingDto);
-
         Assertions.assertNull(resultPosition.getId());
         Assertions.assertEquals(positionIncomingDto.getName(), resultPosition.getName());
     }
@@ -52,7 +51,6 @@ class PositionDtoMapperImplTest {
     @Test
     void testMapUpdate() {
         Position resultPosition = positionDtoMapper.map(positionUpdateDto);
-
         Assertions.assertEquals(positionUpdateDto.getId(), resultPosition.getId());
         Assertions.assertEquals(positionUpdateDto.getName(), resultPosition.getName());
     }
@@ -61,7 +59,6 @@ class PositionDtoMapperImplTest {
     @Test
     void testMapOutgoing() {
         PositionOutGoingDto resultPosition = positionDtoMapper.map(position);
-
         Assertions.assertEquals(position.getId(), resultPosition.getId());
         Assertions.assertEquals(position.getName(), resultPosition.getName());
     }

@@ -32,7 +32,6 @@ class EmployeeDtoMapperImplTest {
                 new Position(1L, "position1")
         );
         Employee result = employeeDtoMapper.map(dto);
-
         Assertions.assertNull(result.getId());
         Assertions.assertEquals(dto.getFirstName(), result.getFirstName());
         Assertions.assertEquals(dto.getLastName(), result.getLastName());
@@ -51,7 +50,6 @@ class EmployeeDtoMapperImplTest {
                 List.of(new SubdivisionUpdateDto())
         );
         Employee result = employeeDtoMapper.map(dto);
-
         Assertions.assertEquals(dto.getId(), result.getId());
         Assertions.assertEquals(dto.getFirstName(), result.getFirstName());
         Assertions.assertEquals(dto.getLastName(), result.getLastName());
@@ -72,7 +70,6 @@ class EmployeeDtoMapperImplTest {
                 List.of(new Subdivision(1L, "d1", List.of()))
         );
         EmployeeOutGoingDto result = employeeDtoMapper.map(employee);
-
         Assertions.assertEquals(employee.getId(), result.getId());
         Assertions.assertEquals(employee.getFirstName(), result.getFirstName());
         Assertions.assertEquals(employee.getLastName(), result.getLastName());

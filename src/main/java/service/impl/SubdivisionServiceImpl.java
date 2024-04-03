@@ -26,7 +26,6 @@ public class SubdivisionServiceImpl implements SubdivisionService {
     private static final SubdivisionDtoMapper employeeDtoMapper = SubdivisionDtoMapperImpl.getInstance();
     private static SubdivisionService instance;
 
-
     private SubdivisionServiceImpl() {
     }
 

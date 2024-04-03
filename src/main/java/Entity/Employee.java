@@ -88,7 +88,6 @@ public class Employee {
         return subdivisionList;
     }
 
-
     public void setSubdivisionList(List<Subdivision> subdivisionList) {
         this.subdivisionList = subdivisionList;
     }

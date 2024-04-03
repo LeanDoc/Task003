@@ -48,5 +48,4 @@ public class EmployeeOutGoingDto {
     public List<SubdivisionOutGoingDto> getSubdivisionList() {
         return subdivisionList;
     }
-
 }

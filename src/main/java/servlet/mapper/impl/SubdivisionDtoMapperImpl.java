@@ -18,7 +18,6 @@ public class SubdivisionDtoMapperImpl implements SubdivisionDtoMapper {
     private SubdivisionDtoMapperImpl() {
     }
 
-
     public static synchronized SubdivisionDtoMapper getInstance() {
         if (instance == null) {
             instance = new SubdivisionDtoMapperImpl();

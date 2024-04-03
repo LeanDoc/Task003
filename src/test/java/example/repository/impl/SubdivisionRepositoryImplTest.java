@@ -68,9 +68,7 @@ class SubdivisionRepositoryImplTest {
                 null
         );
         subdivision = subdivisionRepository.save(subdivision);
-
         Optional<Subdivision> resultSubdivision = subdivisionRepository.findById(subdivision.getId());
-
         Assertions.assertTrue(resultSubdivision.isPresent());
         Assertions.assertEquals(expectedName, resultSubdivision.get().getName());
 
@@ -79,16 +77,13 @@ class SubdivisionRepositoryImplTest {
     @Test
     void update() throws SQLException {
         String expectedName = "Update subdivision name";
-
         Subdivision subdivision = subdivisionRepository.findById(2L).get();
         String oldName = subdivision.getName();
         int expectedSizeEmployeeList = subdivision.getEmployeeList().size();
         subdivision.setName(expectedName);
         subdivisionRepository.update(subdivision);
-
         Subdivision resultSubdivision = subdivisionRepository.findById(2L).get();
         int resultSizeEmployeeList = resultSubdivision.getEmployeeList().size();
-
         Assertions.assertNotEquals(expectedName, oldName);
         Assertions.assertEquals(expectedName, resultSubdivision.getName());
         Assertions.assertEquals(expectedSizeEmployeeList, resultSizeEmployeeList);
@@ -98,16 +93,12 @@ class SubdivisionRepositoryImplTest {
     void deleteById() throws SQLException {
         Boolean expectedValue = true;
         int expectedSize = subdivisionRepository.findAll().size();
-
         Subdivision tempSubdivision = new Subdivision(null, "New subdivision", List.of());
         tempSubdivision = subdivisionRepository.save(tempSubdivision);
-
         int resultSizeBefore = subdivisionRepository.findAll().size();
         Assertions.assertNotEquals(expectedSize, resultSizeBefore);
-
         boolean resultDelete = subdivisionRepository.deleteById(tempSubdivision.getId());
         int resultSizeAfter = subdivisionRepository.findAll().size();
-
         Assertions.assertEquals(expectedValue, resultDelete);
         Assertions.assertEquals(expectedSize, resultSizeAfter);
 
@@ -122,7 +113,6 @@ class SubdivisionRepositoryImplTest {
     })
     void findById(Long expectedId, Boolean expectedValue) throws SQLException {
         Optional<Subdivision> subdivision = subdivisionRepository.findById(expectedId);
-
         Assertions.assertEquals(expectedValue, subdivision.isPresent());
         if (subdivision.isPresent()) {
             Assertions.assertEquals(expectedId, subdivision.get().getId());
@@ -133,7 +123,6 @@ class SubdivisionRepositoryImplTest {
     void findAll() throws SQLException {
         int expectedSize = 4;
         int resultSize = subdivisionRepository.findAll().size();
-
         Assertions.assertEquals(expectedSize, resultSize);
     }
 
@@ -146,7 +135,6 @@ class SubdivisionRepositoryImplTest {
     }, delimiter = ';')
     void exitsById(Long subdivisionId, Boolean expectedValue) throws SQLException {
         boolean isPositionExist = subdivisionRepository.exitsById(subdivisionId);
-
         Assertions.assertEquals(expectedValue, isPositionExist);
     }
 }

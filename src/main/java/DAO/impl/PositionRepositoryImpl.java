@@ -61,11 +61,8 @@ public class PositionRepositoryImpl implements PositionRepository {
     public Position save(Position position) throws SQLException {
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SAVE_SQL, Statement.RETURN_GENERATED_KEYS)) {
-
             preparedStatement.setString(1, position.getName());
-
             preparedStatement.executeUpdate();
-
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (resultSet.next()) {
                 position = new Position(
@@ -75,7 +72,6 @@ public class PositionRepositoryImpl implements PositionRepository {
         } catch (SQLException e) {
             throw new SQLException(e);
         }
-
         return position;
     }
 
@@ -83,10 +79,8 @@ public class PositionRepositoryImpl implements PositionRepository {
     public void update(Position position) throws SQLException {
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_SQL);) {
-
             preparedStatement.setString(1, position.getName());
             preparedStatement.setLong(2, position.getId());
-
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException(e);
@@ -98,14 +92,11 @@ public class PositionRepositoryImpl implements PositionRepository {
         boolean deleteResult;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETE_SQL);) {
-
             preparedStatement.setLong(1, id);
-
             deleteResult = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new SQLException(e);
         }
-
         return deleteResult;
     }
 
@@ -114,9 +105,7 @@ public class PositionRepositoryImpl implements PositionRepository {
         Position position = null;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_ID_SQL)) {
-
             preparedStatement.setLong(1, id);
-
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 position = createPosition(resultSet);
@@ -132,7 +121,6 @@ public class PositionRepositoryImpl implements PositionRepository {
         List<Position> positionList = new ArrayList<>();
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL_SQL)) {
-
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 positionList.add(createPosition(resultSet));
@@ -148,9 +136,7 @@ public class PositionRepositoryImpl implements PositionRepository {
         boolean isExists = false;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(EXIST_BY_ID_SQL)) {
-
             preparedStatement.setLong(1, id);
-
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 isExists = resultSet.getBoolean(1);

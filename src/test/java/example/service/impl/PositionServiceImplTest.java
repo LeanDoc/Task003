@@ -54,30 +54,21 @@ class PositionServiceImplTest {
     @Test
     void save() throws SQLException {
         Long expectedId = 1L;
-
         PositionIncomingDto dto = new PositionIncomingDto("position #2");
         Position role = new Position(expectedId, "position #10");
-
         Mockito.doReturn(role).when(mockPositionRepository).save(Mockito.any(Position.class));
-
         PositionOutGoingDto result = positionService.save(dto);
-
         Assertions.assertEquals(expectedId, result.getId());
     }
 
     @Test
     void update() throws SQLException {
         Long expectedId = 1L;
-
         PositionUpdateDto dto = new PositionUpdateDto(expectedId, "position update #1");
-
         Mockito.doReturn(true).when(mockPositionRepository).exitsById(Mockito.any());
-
         positionService.update(dto);
-
         ArgumentCaptor<Position> argumentCaptor = ArgumentCaptor.forClass(Position.class);
         Mockito.verify(mockPositionRepository).update(argumentCaptor.capture());
-
         Position result = argumentCaptor.getValue();
         Assertions.assertEquals(expectedId, result.getId());
     }
@@ -85,14 +76,10 @@ class PositionServiceImplTest {
     @Test
     void findById() throws SQLException {
         Long expectedId = 1L;
-
         Optional<Position> role = Optional.of(new Position(expectedId, "position found #1"));
-
         Mockito.doReturn(true).when(mockPositionRepository).exitsById(Mockito.any());
         Mockito.doReturn(role).when(mockPositionRepository).findById(Mockito.anyLong());
-
         PositionOutGoingDto dto = positionService.findById(expectedId);
-
         Assertions.assertEquals(expectedId, dto.getId());
     }
 
@@ -105,14 +92,10 @@ class PositionServiceImplTest {
     @Test
     void delete() throws SQLException {
         Long expectedId = 100L;
-
         Mockito.doReturn(true).when(mockPositionRepository).exitsById(100L);
-
         positionService.delete(expectedId);
-
         ArgumentCaptor<Long> argumentCaptor = ArgumentCaptor.forClass(Long.class);
         Mockito.verify(mockPositionRepository).deleteById(argumentCaptor.capture());
-
         Long result = argumentCaptor.getValue();
         Assertions.assertEquals(expectedId, result);
     }

@@ -17,7 +17,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     private static final EmployeeDtoMapper employeeDtoMapper = EmployeeDtoMapperImpl.getInstance();
     private static EmployeeService instance;
 
-
     private EmployeeServiceImpl() {
     }
 

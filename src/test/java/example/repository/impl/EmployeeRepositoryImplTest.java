@@ -58,7 +58,6 @@ class EmployeeRepositoryImplTest {
     void save() throws SQLException {
         String expectedFirstname = "new Firstname";
         String expectedLastname = "new Lastname";
-
         Employee employee = new Employee(
                 null,
                 expectedFirstname,
@@ -68,7 +67,6 @@ class EmployeeRepositoryImplTest {
                 null);
         employee = employeeRepository.save(employee);
         Optional<Employee> resultEmployee = employeeRepository.findById(employee.getId());
-
         Assertions.assertTrue(resultEmployee.isPresent());
         Assertions.assertEquals(expectedFirstname, resultEmployee.get().getFirstName());
         Assertions.assertEquals(expectedLastname, resultEmployee.get().getLastName());
@@ -78,10 +76,8 @@ class EmployeeRepositoryImplTest {
     @Test
     void update() throws SQLException {
         String expectedName = "UPDATE Name";
-
         Employee employeeForUpdate = employeeRepository.findById(5L).get();
         employeeForUpdate.setFirstName(expectedName);
-
         employeeRepository.update(employeeForUpdate);
         Assertions.assertEquals(expectedName, employeeForUpdate.getFirstName());
     }
@@ -91,7 +87,6 @@ class EmployeeRepositoryImplTest {
     void deleteById() throws SQLException {
         Boolean expectedValue = true;
         int expectedSize = employeeRepository.findAll().size();
-
         Employee tempEmployee = new Employee(
                 null,
                 "Employee for delete Firstname.",
@@ -101,10 +96,8 @@ class EmployeeRepositoryImplTest {
                 null
         );
         tempEmployee = employeeRepository.save(tempEmployee);
-
         boolean resultDelete = employeeRepository.deleteById(tempEmployee.getId());
         int positionListAfterSize = employeeRepository.findAll().size();
-
         Assertions.assertEquals(expectedValue, resultDelete);
         Assertions.assertEquals(expectedSize, positionListAfterSize);
     }
@@ -126,7 +119,6 @@ class EmployeeRepositoryImplTest {
     void findAll() throws SQLException {
         int expectedSize = 7;//7
         int resultSize = employeeRepository.findAll().size();
-        System.out.println(employeeRepository.findAll().size());
         Assertions.assertEquals(expectedSize, resultSize);
     }
 
@@ -139,7 +131,6 @@ class EmployeeRepositoryImplTest {
     }, delimiter = ';')
     void exitsById(Long positionId, Boolean expectedValue) throws SQLException {
         boolean isEmployeeExist = employeeRepository.exitsById(positionId);
-
         Assertions.assertEquals(expectedValue, isEmployeeExist);
     }
 }

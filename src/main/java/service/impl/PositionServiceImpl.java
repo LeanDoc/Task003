@@ -19,7 +19,6 @@ public class PositionServiceImpl implements PositionService {
     private static PositionService instance;
     private final PositionDtoMapper positionDtoMapper = PositionDtoMapperImpl.getInstance();
 
-
     private PositionServiceImpl() {
     }
 

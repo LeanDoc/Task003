@@ -20,7 +20,6 @@ public class EmployeeDtoMapperImpl implements EmployeeDtoMapper {
     private static final PhoneNumberDtoMapper phoneNumberDtoMapper = PhoneNumberDtoMapperImpl.getInstance();
     private static final SubdivisionDtoMapper subdivisionDtoMapper = SubdivisionDtoMapperImpl.getInstance();
 
-
     private static EmployeeDtoMapper instance;
 
     private EmployeeDtoMapperImpl() {
@@ -78,6 +77,4 @@ public class EmployeeDtoMapperImpl implements EmployeeDtoMapper {
         }
         return list;
     }
-
-
 }
